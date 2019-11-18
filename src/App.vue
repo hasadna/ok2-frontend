@@ -4,8 +4,8 @@
   </div>
 </template>
 
-<script>
-import Frame from './components/Frame.vue'
+<script lang="ts">
+import Frame from './components/views/frame/Frame.vue';
 
 export default {
   name: 'app',

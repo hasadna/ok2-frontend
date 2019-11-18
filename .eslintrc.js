@@ -1,12 +1,17 @@
 module.exports = {
+    "root": true,
     "env": {
         "browser": true,
         "es6": true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:react/recommended"
+        "plugin:vue/essential",
     ],
+    "parserOptions": {
+        "parser": "@typescript-eslint/parser"
+    },
     "rules": {
         "@typescript-eslint/array-type": ["error", {
             "default": "array"
@@ -58,7 +63,7 @@ module.exports = {
         }],
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/no-var-requires": "off",
-        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/semi": "error",
         "eqeqeq": ["error", "always"],
         "linebreak-style": "off",
         "no-alert": "error",
@@ -76,10 +81,6 @@ module.exports = {
         "prefer-arrow-callback": "error",
         "prefer-const": "error",
         "prefer-rest-params": "off",
-        "react/jsx-uses-vars": "error",
-        "react/no-find-dom-node": "off",
-        "react/no-unescaped-entities": "off",
-        "react/prop-types": "off",
-        "semi": "off"
+        "semi": "error"
     }
 }
