@@ -1,24 +1,35 @@
-# vue
+# ok2-frontend
+
+The frontend of Open Knesset v2.0
 
 ## Project setup
-```
+
+```shell
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+### Compile and hot-reloads for development
+
+```shell
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
+### Compile and minify for production
+
+```shell
 npm run build
 ```
 
-### Lints and fixes files
-```
+### Lint files
+
+Just lint:
+
+```shell
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Lint and fix errors:
+
+```shell
+npm run lint --fix
+```
