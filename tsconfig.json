@@ -1,0 +1,45 @@
+{
+    "include": [
+        "src/**/*.*"
+    ],
+    "compilerOptions": {
+
+        // --- input --- //
+
+        "baseUrl": ".",
+        "typeRoots": ["./node_modules/@types"],
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "importHelpers": true,
+        
+        // --- output --- //
+
+        "outDir": "./.temp/ts_compiled",
+        "sourceMap": true,
+        "target": "esnext",
+        "module": "esnext",
+        "removeComments": false,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "downlevelIteration": true,
+
+        // --- validation options --- //
+
+        "allowJs": true,
+        "checkJs": true,
+        
+        "alwaysStrict": true,
+        "allowSyntheticDefaultImports": true,
+        "allowUnreachableCode": false,
+        "forceConsistentCasingInFileNames": true,
+        "lib": ["dom", "es2017", "es2018.promise"],
+        "noImplicitAny": false,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "skipLibCheck": true,
+        "strictNullChecks": false
+    }
+}

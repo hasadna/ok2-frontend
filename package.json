@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "core-js": "^3.3.2",
@@ -19,6 +20,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "typescript": "^3.7.2",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
