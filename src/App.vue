@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <Frame msg="Welcome to Your Vue.js App" />
+    <Frame :msg="language.common.appName" />
   </div>
 </template>
 
 <script lang="ts">
 import Frame from './components/views/frame/Frame.vue';
+import { language } from './app/locale/language';
 
 export default {
   name: 'app',
   components: {
     Frame
+  },
+  data() {
+    return {
+      language
+    };
   }
 };
 </script>

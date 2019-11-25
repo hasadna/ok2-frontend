@@ -1,8 +1,6 @@
 <template>
   <div class="hello">
-  <div class="views-container">
-
-  </div>
+    <div class="views-container">{{ msg }}</div>
   </div>
 </template>
 
@@ -20,7 +18,6 @@ export default {
 .views-container {
   width: 100vw;
   height: 70vh;
-  background-color: lightgrey
+  background-color: lightgrey;
 }
-
 </style>
