@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "eslint \"./src/**/!(*.d).{ts,tsx,js,jsx,vue}\"",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "quality": "npm run typecheck && npm run lint"
   },
   "dependencies": {
     "core-js": "^3.3.2",

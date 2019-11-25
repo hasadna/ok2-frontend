@@ -1,12 +1,12 @@
 export const language = {
-    en: {
-        message: {
-            hello: 'hello world'
-        }
-    },
-    ja: {
-        message: {
-            hello: 'こんにちは、世界'
-        }
+  en: {
+    message: {
+      hello: 'hello world'
     }
-}
+  },
+  ja: {
+    message: {
+      hello: 'こんにちは、世界'
+    }
+  }
+};

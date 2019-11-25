@@ -25,7 +25,7 @@ module.exports = {
                 "constructors": "off"
             }
         }],
-        "@typescript-eslint/indent": ["error", 4, {
+        "@typescript-eslint/indent": ["error", 2, {
             "flatTernaryExpressions": true,
             "SwitchCase": 1
         }],

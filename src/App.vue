@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Frame msg="Welcome to Your Vue.js App"/>
+    <Frame msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   components: {
     Frame
   }
-}
+};
 </script>
 
 <style>
