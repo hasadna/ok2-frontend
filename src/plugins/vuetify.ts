@@ -1,9 +1,11 @@
 import Vue from 'vue';
-import Vuetify from 'vuetify';
+import VuetifyLib from 'vuetify/lib';
+// @ts-ignore
+import Vuetify from 'vuetify'; // eslint-disable-line
 
-Vue.use(Vuetify);
+Vue.use(VuetifyLib);
 
-export default new Vuetify({
+export default new VuetifyLib({
     rtl: true,
     theme: {
         themes: {
