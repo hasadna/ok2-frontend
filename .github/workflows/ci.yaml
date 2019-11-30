@@ -9,7 +9,8 @@ jobs:
 
     steps:
 
-    - uses: actions/checkout@v1
+    - name: Checkout
+      uses: actions/checkout@v1
 
     - name: Cache node_modules
       uses: actions/cache@v1
