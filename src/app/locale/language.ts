@@ -20,6 +20,12 @@ export const language = {
       he: 'התחבר'
     }
   },
+  home: {
+    welcomeTitle: {
+      he: 'ברוכים הבאים לכנסת פתוחה 2.0',
+      en: 'Welcome to Open Knesset 2.0'
+    }
+  },
   oneMinuteSpeech: {
 
   }
