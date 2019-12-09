@@ -27,10 +27,7 @@
       </template>
 
       <div>
-        <select @change="onLanguageChange($event)" :value="selectedLanguage">
-          <option value="he">עברית</option>
-          <option value="en">English</option>
-        </select>
+        <LanguageSelect />
       </div>
     </v-app-bar>
 
@@ -56,26 +53,20 @@
 
 <script>
 import Home from './components/views/home/Home.vue';
-import { Localizer } from './app/locale/localizer';
+import LanguageSelect from './components/views/layout/LanguageSelect';
 
 export default {
   name: 'App',
 
   components: {
-    Home
+    Home,
+    LanguageSelect
   },
 
   data: () => ({
-    selectedLanguage: Localizer.instance.languageName
   }),
 
   methods: {
-    onLanguageChange(e) {
-      Localizer.instance.languageName = e.target.value;
-      // Next line is ugly but I didn't find any other way
-      // to refersh the entire app
-      location.reload();
-    }
   }
 };
 </script>
