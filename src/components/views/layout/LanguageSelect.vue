@@ -16,8 +16,8 @@ export default {
   }),
 
   methods: {
-    onLanguageChange(e) {
-      Localizer.instance.languageName = e.target.value;
+    onLanguageChange(e: Event) {
+      Localizer.instance.languageName = (e.target as HTMLSelectElement).value;
       // Next line is ugly but I didn't find any other way
       // to refersh the entire app
       location.reload();
