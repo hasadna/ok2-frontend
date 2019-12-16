@@ -15,14 +15,16 @@
     <v-app-bar app color="primary" clipped-right>
       <div class="d-flex align-center">
         <v-app-bar-nav-icon  @click.stop="isDrawer = !isDrawer"></v-app-bar-nav-icon>
-        <v-img
-          alt="Logo"
-          class="shrink mr-2"
-          contain
-          :src="require('./assets/logo.png')"
-          transition="scale-transition"
-          width="70"
-        />
+          <router-link to="/" >
+          <v-img
+            alt="Logo"
+            class="shrink mr-2"
+            contain
+            :src="require('./assets/logo.png')"
+            transition="scale-transition"
+            width="70"
+          />
+            </router-link>
         <v-toolbar-title>{{ $language.common.appName }}</v-toolbar-title>
       </div>
 
