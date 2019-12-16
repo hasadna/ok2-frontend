@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <v-navigation-drawer app clipped right>
-      <!-- -->
     </v-navigation-drawer>
 
     <v-app-bar app color="primary" clipped-right>
@@ -25,7 +24,7 @@
       <template v-slot:extension>
         <v-tabs align-with-title>
           <v-tab router to="/">{{ $language.common.home }}</v-tab>
-          <v-tab>כלי1</v-tab>
+          <v-tab router to="/oneminutespeech">{{ $language.oneMinuteSpeech.title }}</v-tab>
           <v-tab>2כלי</v-tab>
           <v-tab>3כלי</v-tab>
         </v-tabs>
@@ -37,30 +36,23 @@
     </v-app-bar>
 
     <v-content>
-      <!-- Provides the application the proper gutter -->
       <v-container fluid>
-        <!-- If using vue-router -->
-        <router-view name="home">
-          <Home />
-        </router-view>
+        <router-view></router-view>
       </v-container>
     </v-content>
 
     <v-footer app>
-      <!-- footer content here -->
     </v-footer>
   </v-app>
 </template>
 
 <script>
-import Home from './components/views/home/Home.vue';
 import LanguageSelect from './components/views/layout/LanguageSelect';
 
 export default {
   name: 'App',
 
   components: {
-    Home,
     LanguageSelect
   },
 
