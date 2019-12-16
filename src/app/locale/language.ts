@@ -18,6 +18,10 @@ export const language = {
     },
     login: {
       he: 'התחבר'
+    },
+    home: {
+      he: 'בית',
+      en: 'Home'
     }
   },
   home: {

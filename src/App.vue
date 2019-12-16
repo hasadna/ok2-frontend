@@ -1,6 +1,10 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary">
+    <v-navigation-drawer app clipped right>
+      <!-- -->
+    </v-navigation-drawer>
+
+    <v-app-bar app color="primary" clipped-right>
       <div class="d-flex align-center">
         <v-app-bar-nav-icon></v-app-bar-nav-icon>
         <v-img
@@ -20,6 +24,7 @@
 
       <template v-slot:extension>
         <v-tabs align-with-title>
+          <v-tab router to="/">{{ $language.common.home }}</v-tab>
           <v-tab>כלי1</v-tab>
           <v-tab>2כלי</v-tab>
           <v-tab>3כלי</v-tab>
@@ -31,15 +36,11 @@
       </div>
     </v-app-bar>
 
-    <v-navigation-drawer clipped right app>
-      <!-- -->
-    </v-navigation-drawer>
-
     <v-content>
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
         <!-- If using vue-router -->
-        <router-view>
+        <router-view name="home">
           <Home />
         </router-view>
       </v-container>
