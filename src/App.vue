@@ -1,12 +1,20 @@
 <template>
   <v-app>
-    <v-navigation-drawer app clipped right>
-      <!-- -->
+    <v-navigation-drawer app clipped right v-model="isDrawer">
+     <v-list nav dense>
+        <v-list-item-group>
+          <v-list-item v-for="menu in menus"  v-bind:key="menu.link">
+            <router-link :to="{path:menu.link}" >
+            <v-list-item-title >{{menu.name}}</v-list-item-title>
+            </router-link>
+          </v-list-item>
+        </v-list-item-group>
+     </v-list>
     </v-navigation-drawer>
 
     <v-app-bar app color="primary" clipped-right>
       <div class="d-flex align-center">
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon  @click.stop="isDrawer = !isDrawer"></v-app-bar-nav-icon>
         <v-img
           alt="Logo"
           class="shrink mr-2"
@@ -22,14 +30,7 @@
 
       <v-menu bottom right></v-menu>
 
-      <template v-slot:extension>
-        <v-tabs align-with-title>
-          <v-tab router to="/">{{ $language.common.home }}</v-tab>
-          <v-tab>כלי1</v-tab>
-          <v-tab>2כלי</v-tab>
-          <v-tab>3כלי</v-tab>
-        </v-tabs>
-      </template>
+
 
       <div>
         <select @change="onLanguageChange($event)" :value="selectedLanguage">
@@ -67,7 +68,12 @@ export default {
   },
 
   data: () => ({
-    selectedLanguage: Localizer.instance.languageName
+    selectedLanguage: Localizer.instance.languageName,
+    isDrawer: true,
+    menus:[
+      {name:'Home', link:'/'},
+      {name:'כלי', link:'/tool1'},
+    ]
   }),
 
   methods: {
