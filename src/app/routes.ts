@@ -6,6 +6,6 @@ const routes = [
     name: 'home',
     component: Home
   }
-]
+];
 
-export default routes
+export default routes;
