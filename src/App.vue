@@ -27,9 +27,8 @@
         </router-link>
         <v-toolbar-title>{{ $language.common.appName }}</v-toolbar-title>
       </div>
-
       <v-spacer></v-spacer>
-
+      <Login></Login>
       <v-menu bottom right></v-menu>
 
       <div>
@@ -58,13 +57,15 @@
 
 <script>
 import Home from './components/views/home/Home.vue';
+import Login from './components/shared/Login';
 import { Localizer } from './app/locale/localizer';
 
 export default {
   name: 'App',
 
   components: {
-    Home
+    Home,
+    Login
   },
 
   data: () => ({
