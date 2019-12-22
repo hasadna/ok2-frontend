@@ -17,7 +17,8 @@ export const language = {
       en: 'Open Kenesset 2.0'
     },
     login: {
-      he: 'התחבר'
+      he: 'התחבר',
+      en: 'login',
     },
     home: {
       he: 'בית',
@@ -28,6 +29,16 @@ export const language = {
     welcomeTitle: {
       he: 'ברוכים הבאים לכנסת פתוחה 2.0',
       en: 'Welcome to Open Knesset 2.0'
+    }
+  },
+  register: {
+    signup: {
+      he: 'הרשמו לכנסת פתוחה 2.0',
+      en: 'Sign up'
+    },
+    errorMeesge: {
+      he: `The username or password are wrong :(`,
+      en: `The username or password are wrong :(`
     }
   },
   oneMinuteSpeech: {

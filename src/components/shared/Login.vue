@@ -9,7 +9,7 @@
       <v-form @submit.prevent="login()" id="login-form">
         <v-card class="elevation-12">
           <v-toolbar dark color="blue">
-            <v-toolbar-title>Login form</v-toolbar-title>
+            <v-toolbar-title>{{ $language.common.login }}</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn text @click="dialog = false">
               <v-icon>mdi-close</v-icon>
@@ -25,9 +25,9 @@
           </v-card-text>
           <v-divider light></v-divider>
           <v-card-actions>
-            <v-btn @click.prevent="signUp()" color="indigo" dark>Sign up</v-btn>
+            <v-btn @click.prevent="signUp()" color="indigo" dark>{{ $language.register.signup }}</v-btn>
             <v-spacer></v-spacer>
-            <v-btn color="primary" dark>Login</v-btn>
+            <v-btn color="primary" dark>{{ $language.common.login }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-form>
@@ -55,7 +55,7 @@ export default {
           this.dialog = false;
         })
         .catch(err => {
-          this.errorMeesge = 'The username or password are wrong :(';
+          this.errorMeesge = this.$language.register.errorMeesge ;
         });
     },
     signUp() {
