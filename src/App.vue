@@ -28,7 +28,10 @@
         <v-toolbar-title>{{ $language.common.appName }}</v-toolbar-title>
       </div>
       <v-spacer></v-spacer>
-      <Login></Login>
+
+      <Login v-if="!getUser" />
+      <Logout v-if="getUser" />
+
       <v-menu bottom right></v-menu>
 
       <div>
@@ -58,14 +61,18 @@
 <script>
 import Home from './components/views/home/Home.vue';
 import Login from './components/shared/Login';
+import Logout from './components/shared/Logout';
 import { Localizer } from './app/locale/localizer';
-
+import { mapGetters } from 'vuex';
 export default {
   name: 'App',
-
   components: {
     Home,
-    Login
+    Login,
+    Logout
+  },
+  computed: {
+    ...mapGetters(['getUser'])
   },
 
   data: () => ({

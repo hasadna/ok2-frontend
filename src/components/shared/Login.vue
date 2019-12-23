@@ -25,9 +25,9 @@
           </v-card-text>
           <v-divider light></v-divider>
           <v-card-actions>
-            <v-btn @click.prevent="signUp()" color="indigo" dark>{{ $language.register.signup }}</v-btn>
+            <v-btn @click.prevent="navigateToRegisterPage()" type="button" color="primary" dark>{{ $language.register.signup }}</v-btn>
             <v-spacer></v-spacer>
-            <v-btn color="primary" dark>{{ $language.common.login }}</v-btn>
+            <v-btn color="indigo"  dark  type="submit"  form="login-form">{{ $language.common.login }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-form>
@@ -46,7 +46,7 @@ export default {
     login() {
       this.errorMeesge = '';
       this.$store
-        .dispatch('LOGIN', {
+        .dispatch('logIn', {
           username: this.username,
           password: this.password
         })
@@ -58,7 +58,7 @@ export default {
           this.errorMeesge = this.$language.register.errorMeesge ;
         });
     },
-    signUp() {
+    navigateToRegisterPage() {
       this.$router.push('RegisterPage');
       this.dialog = false;
     }
