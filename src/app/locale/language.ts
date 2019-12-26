@@ -31,6 +31,9 @@ export const language = {
     }
   },
   oneMinuteSpeech: {
-
+    title: {
+      he: 'נאומים בני דקה',
+      en: 'One Minute Speech'
+    }
   }
 };

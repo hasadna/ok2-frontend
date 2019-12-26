@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <v-navigation-drawer app clipped right>
-      <!-- -->
     </v-navigation-drawer>
 
     <v-app-bar app color="primary" clipped-right>
@@ -25,58 +24,42 @@
       <template v-slot:extension>
         <v-tabs align-with-title>
           <v-tab router to="/">{{ $language.common.home }}</v-tab>
-          <v-tab>כלי1</v-tab>
+          <v-tab router to="/oneminutespeech">{{ $language.oneMinuteSpeech.title }}</v-tab>
           <v-tab>2כלי</v-tab>
           <v-tab>3כלי</v-tab>
         </v-tabs>
       </template>
 
       <div>
-        <select @change="onLanguageChange($event)" :value="selectedLanguage">
-          <option value="he">עברית</option>
-          <option value="en">English</option>
-        </select>
+        <LanguageSelect />
       </div>
     </v-app-bar>
 
     <v-content>
-      <!-- Provides the application the proper gutter -->
       <v-container fluid>
-        <!-- If using vue-router -->
-        <router-view name="home">
-          <Home />
-        </router-view>
+        <router-view></router-view>
       </v-container>
     </v-content>
 
     <v-footer app>
-      <!-- footer content here -->
     </v-footer>
   </v-app>
 </template>
 
 <script>
-import Home from './components/views/home/Home.vue';
-import { Localizer } from './app/locale/localizer';
+import LanguageSelect from './components/views/layout/LanguageSelect';
 
 export default {
   name: 'App',
 
   components: {
-    Home
+    LanguageSelect
   },
 
   data: () => ({
-    selectedLanguage: Localizer.instance.languageName
   }),
 
   methods: {
-    onLanguageChange(e) {
-      Localizer.instance.languageName = e.target.value;
-      // Next line is ugly but I didn't find any other way
-      // to refersh the entire app
-      location.reload();
-    }
   }
 };
 </script>
