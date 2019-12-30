@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import Home from './components/views/home/Home.vue';
+import Home from './components/views/home/Home';
 import Login from './components/shared/Login';
 import Logout from './components/shared/Logout';
 import { Localizer } from './app/locale/localizer';
@@ -63,7 +63,8 @@ export default {
   components: {
     Home,
     Login,
-    Logout
+    Logout,
+    LanguageSelect
   },
   computed: {
     ...mapGetters(['getUser'])
