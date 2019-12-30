@@ -1,19 +1,20 @@
 <template>
   <div class="tool-container">
+    <h1>{{ title }}</h1>
     <div class="mini-blocks-container">
       <div>
-        <div class="mini-block">הסבר קצר</div>
-        <div class="mini-block">עתיד</div>
+        <div class="mini-block"><slot name="description" /></div>
+        <div class="mini-block"><slot name="future" /></div>
       </div>
 
       <div>
-        <div class="mini-block">תקנון</div>
-        <div class="mini-block">היסטוריה</div>
+        <div class="mini-block"><slot name="regulations" /></div>
+        <div class="mini-block"><slot name="history" /></div>
       </div>
     </div>
 
     <div class="tool-body-container">
-      <div>הכלי עצמו</div>
+      <slot name="body" />
     </div>
   </div>
 </template>
@@ -21,6 +22,10 @@
 <script lang="ts">
 export default {
   name: 'ParliamentTool',
+
+  props: {
+    title: String
+  },
 
   data: () => ({}),
 
