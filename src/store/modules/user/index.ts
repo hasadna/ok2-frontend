@@ -44,8 +44,7 @@ export interface UserState {
   user: User | null;
 }
 
-
 export interface LoginRequest {
   username: string;
-  password: string
+  password: string;
 }

@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import Home from './components/views/home/Home';
 import Login from './components/shared/Login';
 import Logout from './components/shared/Logout';
 import { Localizer } from './app/locale/localizer';
@@ -61,7 +60,6 @@ import LanguageSelect from './components/views/layout/LanguageSelect';
 export default {
   name: 'App',
   components: {
-    Home,
     Login,
     Logout,
     LanguageSelect
