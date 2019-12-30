@@ -16,8 +16,8 @@ const actions = {
   logIn: ({ commit }: any, { username }: { username: string; password: string }) => {
 
     UsersService.getUser(username)
-      .then(res => {
-        commit(LOGIN.CHECK_IN, res);
+      .then(user => {
+        commit(LOGIN.CHECK_IN, user);
       });
   },
   logOut: ({ commit }: any) => {
