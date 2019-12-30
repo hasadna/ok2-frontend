@@ -35,25 +35,17 @@
       <v-menu bottom right></v-menu>
 
       <div>
-        <select @change="onLanguageChange($event)" :value="selectedLanguage">
-          <option value="he">עברית</option>
-          <option value="en">English</option>
-        </select>
+        <LanguageSelect />
       </div>
     </v-app-bar>
 
     <v-content>
-      <!-- Provides the application the proper gutter -->
       <v-container fluid>
-        <!-- If using vue-router -->
-        <router-view name="home">
-          <Home />
-        </router-view>
+        <router-view></router-view>
       </v-container>
     </v-content>
 
     <v-footer app>
-      <!-- footer content here -->
     </v-footer>
   </v-app>
 </template>
@@ -64,6 +56,8 @@ import Login from './components/shared/Login';
 import Logout from './components/shared/Logout';
 import { Localizer } from './app/locale/localizer';
 import { mapGetters } from 'vuex';
+import LanguageSelect from './components/views/layout/LanguageSelect';
+
 export default {
   name: 'App',
   components: {
@@ -82,12 +76,6 @@ export default {
   }),
 
   methods: {
-    onLanguageChange(e) {
-      Localizer.instance.languageName = e.target.value;
-      // Next line is ugly but I didn't find any other way
-      // to refersh the entire app
-      location.reload();
-    }
   }
 };
 </script>
