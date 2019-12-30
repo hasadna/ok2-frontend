@@ -69,7 +69,7 @@ module.exports = {
     "linebreak-style": "off",
     "no-alert": "error",
     "no-bitwise": "error",
-    "no-console": "error",
+    "no-console": "off",
     "no-const-assign": "error",
     "no-debugger": "error",
     "no-multiple-empty-lines": ["error", {
