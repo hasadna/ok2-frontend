@@ -3,11 +3,11 @@
     <v-navigation-drawer app clipped right v-model="isDrawer">
       <v-list nav dense>
         <v-list-item-group>
-          <v-list-item v-for="menu in menus" v-bind:key="menu.link">
-            <router-link :to="{path:menu.link}">
+          <router-link v-for="menu in menus" v-bind:key="menu.link" v-bind:to="{path:menu.link}">
+            <v-list-item>
               <v-list-item-title>{{menu.name}}</v-list-item-title>
-            </router-link>
-          </v-list-item>
+            </v-list-item>
+          </router-link>
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
@@ -45,8 +45,7 @@
       </v-container>
     </v-content>
 
-    <v-footer app>
-    </v-footer>
+    <v-footer app></v-footer>
   </v-app>
 </template>
 
@@ -56,6 +55,8 @@ import Logout from './components/shared/Logout';
 import { Localizer } from './app/locale/localizer';
 import { mapGetters } from 'vuex';
 import LanguageSelect from './components/views/layout/LanguageSelect';
+
+const lang = Localizer.instance.language;
 
 export default {
   name: 'App',
@@ -69,13 +70,14 @@ export default {
   },
 
   data: () => ({
-    selectedLanguage: Localizer.instance.languageName,
     isDrawer: true,
-    menus: [{ name: 'Home', link: '/' }, { name: 'כלי', link: '/tool1' }]
+    menus: [
+      { name: lang.common.home, link: '/' },
+      { name: lang.oneMinuteSpeech.title, link: '/oneminutespeech' }
+    ]
   }),
 
-  methods: {
-  }
+  methods: {}
 };
 </script>
 <style scoped>
