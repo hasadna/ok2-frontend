@@ -1,5 +1,6 @@
 import UsersService from '../../../services/users.services';
 import { LOGIN } from '../../mutations-types';
+import { ActionContext, ActionTree } from 'vuex';
 
 const state: UserState = {
   user: null
@@ -12,8 +13,8 @@ const mutations = {
   [LOGIN.CHECK_IN]: (state: UserState, user: User) => (state.user = user),
   [LOGIN.CHECK_OUT]: (state: UserState) => { state.user = null; },
 };
-const actions = {
-  logIn: ({ commit }: any, { username }: { username: string; password: string }) => {
+const actions: ActionTree<UserState, UserState> = {
+  logIn: ({ commit }: ActionContext<UserState, UserState>, { username }: { username: string; password: string }) => {
 
     UsersService.getUser(username)
       .then(user => {
