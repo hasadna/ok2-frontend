@@ -2,14 +2,26 @@
   <div class="tool-container">
     <h1>{{ title }}</h1>
     <div class="mini-blocks-container">
-      <div>
-        <div class="mini-block"><slot name="description" /></div>
-        <div class="mini-block"><slot name="future" /></div>
+      <div class="mini-blocks-row">
+        <div class="mini-block">
+          <slot name="description" />
+        </div>
       </div>
 
-      <div>
-        <div class="mini-block"><slot name="regulations" /></div>
-        <div class="mini-block"><slot name="history" /></div>
+      <div class="mini-blocks-row">
+        <div class="mini-block">
+          <slot name="history" />
+        </div>
+        <div class="mini-block">
+          <slot name="future" />
+        </div>
+      </div>
+
+      <div class="mini-blocks-row">
+        <div class="mini-block">
+          <h4>מתוך תקנון הכנסת</h4>
+          <slot name="regulations" />
+        </div>
       </div>
     </div>
 
@@ -45,13 +57,16 @@ export default {
 .mini-blocks-container {
   flex: 1;
   display: flex;
+  flex-direction: column;
+}
 
-  & div {
-    flex: 1;
-  }
+.mini-blocks-row {
+  display: flex;
 }
 
 .mini-block {
+  flex: 1;
+
   background: #fdfdfd;
 
   margin: 10px;
@@ -63,7 +78,6 @@ export default {
 .tool-body-container {
   flex: 1;
 
-  width: 100%;
   min-height: 30vh;
 
   margin: 10px;
