@@ -4,60 +4,71 @@
       <v-flex xs12 sm8 md8>
         <v-card class="elevation-12">
           <v-toolbar dark color="blue">
-            <v-toolbar-title>Signup form</v-toolbar-title>
+            <v-toolbar-title>{{ $language.register.signUpForm }}</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-form>
-              <v-alert
-                :value="userExists"
-                color="error"
-                icon="warning"
-              >This user already exists, try a different set of data.</v-alert>
+              <v-alert :value="!!alertMsg" color="error" icon="warning">{{alertMsg}}</v-alert>
 
               <v-text-field
-                prepend-icon="person"
-                name="login"
-                v-model="username"
-                label="Login"
+                name="privateName"
+                v-model="privateName"
+                :label="$language.register.privateName"
                 :rules="[rules.required]"
               ></v-text-field>
 
               <v-text-field
-                prepend-icon="email"
+                name="privateName"
+                v-model="lastName"
+                :label="$language.register.lastName"
+                :rules="[rules.required]"
+              ></v-text-field>
+
+              <v-text-field
                 name="email"
                 v-model="email"
-                label="Email"
+                :label="$language.register.email"
                 :rules="[rules.required, rules.email]"
               ></v-text-field>
 
               <v-text-field
-                prepend-icon="lock"
                 name="password"
-                label="Password"
+                :label="$language.register.password"
                 :rules="[rules.required]"
                 type="password"
                 v-model="password"
               ></v-text-field>
 
               <v-text-field
-                prepend-icon="lock"
                 name="password"
-                label="Confirm Password"
+                :label="$language.register.confirm_password"
                 :rules="[rules.required]"
                 type="password"
                 v-model="confirm_password"
                 :error="!valid()"
               ></v-text-field>
+
+              <v-divider light></v-divider>
+
+              <v-radio-group v-model="role">
+                <v-radio
+                  v-for="role in roles"
+                  :key="role.name"
+                  :label="`${role.name}`"
+                  :value="role.name"
+                ></v-radio>
+              </v-radio-group>
             </v-form>
           </v-card-text>
           <v-divider light></v-divider>
           <v-card-actions>
-            <v-btn to="/login" round color="black" dark>Login</v-btn>
+            <v-btn @click.prevent="openLigonModal()" round color="black" dark>כבר נרשמת?</v-btn>
             <v-spacer></v-spacer>
-            <v-btn round color="success" @click.prevent="register()">
-              Register
-              <v-icon>keyboard_arrow_up</v-icon>
-            </v-btn>
+            <v-btn
+              round
+              color="success"
+              @click.prevent="register()"
+            >{{ $language.register.register }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -66,19 +77,30 @@
 </template>
 
 <script>
+import { EventBus, BUSEVENTS } from '../../../services/bus/bus';
+
 export default {
-  name: "RegisterPage",
+  name: 'RegisterPage',
   data: () => ({
-    userExists: false,
-    username: '',
+    alertMsg: ``,
+    privateName: '',
+    lastName: '',
     email: '',
-    password: "",
-    confirm_password: "",
+    password: '',
+    confirm_password: '',
+    role: null,
+    roles: [
+      { name: `יועץ פרלמנטרי` },
+      { name: `אקטיביסט` },
+      { name: `חבר כנסת` },
+      { name: `אחר` }
+    ],
+
     rules: {
-      required: value => !!value || "Required",
+      required: value => !!value || 'Required',
       email: value => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return pattern.test(value) || "Invalid e-mail.";
+        return pattern.test(value) || 'Invalid e-mail.';
       }
     }
   }),
@@ -86,7 +108,9 @@ export default {
     register() {
       if (this.valid()) {
         this.$store.dispatch('REGISTER', {
-          username: this.username,
+          privateName: this.privateName,
+          lastName: this.lastName,
+          role: this.role,
           email: this.email,
           password: this.password
         });
@@ -94,6 +118,9 @@ export default {
     },
     valid() {
       return this.password === this.confirm_password;
+    },
+    openLigonModal() {
+      EventBus.$emit(BUSEVENTS.toglleLoginDialog);
     }
   }
 };

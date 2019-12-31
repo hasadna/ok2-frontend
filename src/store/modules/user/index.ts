@@ -14,9 +14,9 @@ const mutations = {
   [LOGIN.CHECK_OUT]: (state: UserState) => { state.user = null; },
 };
 const actions: ActionTree<UserState, UserState> = {
-  logIn: ({ commit }: ActionContext<UserState, UserState>, { username }: LoginRequest) => {
+  logIn: ({ commit }: ActionContext<UserState, UserState>, credentias: CredentialRequest) => {
 
-    UsersService.getUser(username)
+    UsersService.getUser(credentias)
       .then(user => {
         commit(LOGIN.CHECK_IN, user);
       });
@@ -44,7 +44,7 @@ export interface UserState {
   user: User | null;
 }
 
-export interface LoginRequest {
-  username: string;
+export interface CredentialRequest {
+  email: string;
   password: string;
 }

@@ -19,7 +19,7 @@
             <small>{{errorMeesge}}</small>
           </v-alert>
           <v-card-text>
-            <v-text-field v-model="username" name="login" label="Login" type="text"></v-text-field>
+            <v-text-field v-model="email" name="login" label="Login" type="text"></v-text-field>
 
             <v-text-field v-model="password" name="password" label="Password" type="password"></v-text-field>
           </v-card-text>
@@ -40,19 +40,28 @@
   </v-dialog>
 </template>
 <script>
+import { EventBus, BUSEVENTS } from '../../services/bus/bus';
 export default {
   data: () => ({
     dialog: false,
-    username: '',
+    email: '',
     password: '',
     errorMeesge: ''
   }),
+  created() {
+    EventBus.$on(BUSEVENTS.toglleLoginDialog, () => {
+      this.toglleDialog();
+    });
+  },
   methods: {
+    toglleDialog() {
+      this.dialog = !this.dialog;
+    },
     async login() {
       this.errorMeesge = '';
       try {
         this.$store.dispatch('logIn', {
-          username: this.username,
+          email: this.email,
           password: this.password
         });
         this.dialog = false;
@@ -61,7 +70,7 @@ export default {
       }
     },
     navigateToRegisterPage() {
-      this.$router.push('RegisterPage');
+      this.$router.push('register');
       this.dialog = false;
     }
   }
