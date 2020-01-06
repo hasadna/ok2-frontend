@@ -23,7 +23,11 @@ export const language = {
     home: {
       he: 'בית',
       en: 'Home'
-    }
+    },
+    other: {
+      he: `אחר`,
+      en: `other`,
+    },
   },
   home: {
     welcomeTitle: {
@@ -54,7 +58,7 @@ export const language = {
     },
 
     lastName: {
-      he: `שם משפה`,
+      he: `שם משפחה`,
       en: `Private family`,
     },
     email: {
@@ -66,9 +70,22 @@ export const language = {
       en: `password`,
     },
     confirm_password: {
-      he: `Confirm Password`,
+      he: `סיסמא שנית`,
       en: `Confirm Password`,
     },
+    advisor: {
+      he: `יועץ פרלמנטרי`,
+      en: `Parliamentary consultant`,
+    },
+    activist: {
+      he: `אקטיביסט`,
+      en: `activist`,
+    },
+    mk: {
+      he: `חבר כנסת`,
+      en: `Member of Knesset`,
+    },
+
   },
   oneMinuteSpeech: {
     title: {

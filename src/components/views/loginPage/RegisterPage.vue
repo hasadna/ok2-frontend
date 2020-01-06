@@ -62,13 +62,9 @@
           </v-card-text>
           <v-divider light></v-divider>
           <v-card-actions>
-            <v-btn @click.prevent="openLigonModal()" round color="black" dark>כבר נרשמת?</v-btn>
+            <v-btn @click.prevent="openLigonModal()" color="black" dark>כבר נרשמת?</v-btn>
             <v-spacer></v-spacer>
-            <v-btn
-              round
-              color="success"
-              @click.prevent="register()"
-            >{{ $language.register.register }}</v-btn>
+            <v-btn color="success" @click.prevent="register()">{{ $language.register.register }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -78,6 +74,9 @@
 
 <script>
 import { EventBus, BUSEVENTS } from '../../../services/bus/bus';
+import { Localizer } from '../../../app/locale/localizer';
+
+const lang = Localizer.instance.language;
 
 export default {
   name: 'RegisterPage',
@@ -88,14 +87,13 @@ export default {
     email: '',
     password: '',
     confirm_password: '',
-    role: null,
     roles: [
-      { name: `יועץ פרלמנטרי` },
-      { name: `אקטיביסט` },
-      { name: `חבר כנסת` },
-      { name: `אחר` }
+      { name: lang.register.advisor },
+      { name: lang.register.activist },
+      { name: lang.register.mk },
+      { name: lang.common.other }
     ],
-
+    role: null,
     rules: {
       required: value => !!value || 'Required',
       email: value => {
@@ -104,6 +102,9 @@ export default {
       }
     }
   }),
+  created() {
+    this.role = this.roles[0].name;
+  },
   methods: {
     register() {
       if (this.valid()) {
