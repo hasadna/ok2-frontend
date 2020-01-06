@@ -15,7 +15,6 @@ const mutations = {
 };
 const actions: ActionTree<UserState, UserState> = {
   logIn: ({ commit }: ActionContext<UserState, UserState>, credentias: CredentialRequest) => {
-
     UsersService.getUser(credentias)
       .then(user => {
         commit(LOGIN.CHECK_IN, user);
@@ -23,6 +22,13 @@ const actions: ActionTree<UserState, UserState> = {
   },
   logOut: ({ commit }: any) => {
     commit(LOGIN.CHECK_OUT);
+  },
+  signUp: ({ commit }: any, newUser: NewUser) => {
+    console.log(newUser);
+    UsersService.addUser(newUser)
+      .then(user => {
+        commit(LOGIN.CHECK_IN, user);
+      });
 
   }
 };
@@ -39,12 +45,22 @@ export interface User {
   username: string;
   email: string;
   phone: number;
+  // role:string;
 }
 export interface UserState {
   user: User | null;
 }
 
 export interface CredentialRequest {
+  email: string;
+  password: string;
+}
+
+
+export interface NewUser {
+  privateName: string;
+  lastName: string;
+  role: string;
   email: string;
   password: string;
 }

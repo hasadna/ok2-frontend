@@ -7,7 +7,7 @@
             <v-toolbar-title>{{ $language.register.signUpForm }}</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form>
+            <v-form form @submit.prevent="register()" id="signup-form">
               <v-alert :value="!!alertMsg" color="error" icon="warning">{{alertMsg}}</v-alert>
 
               <v-text-field
@@ -108,7 +108,7 @@ export default {
   methods: {
     register() {
       if (this.valid()) {
-        this.$store.dispatch('REGISTER', {
+        this.$store.dispatch('signUp', {
           privateName: this.privateName,
           lastName: this.lastName,
           role: this.role,
