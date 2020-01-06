@@ -56,7 +56,6 @@ export interface CredentialRequest {
   password: string;
 }
 
-
 export interface NewUser {
   privateName: string;
   lastName: string;

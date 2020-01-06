@@ -2,10 +2,10 @@ import { User, CredentialRequest, NewUser } from './../store/modules/user/index'
 
 class UsersService {
   private baseUrl = `https://jsonplaceholder.typicode.com/users`;
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  }
+  private headers: {
+    'Accept': 'application/json';
+    'Content-Type': 'application/json';
+  };
 
   public async getUser(credentias: CredentialRequest): Promise<User> {
     const res = await fetch(this.baseUrl, {
