@@ -1,33 +1,19 @@
 import { User, CredentialRequest, NewUser } from './../store/modules/user/index';
+import axios from 'axios';
 
 class UsersService {
-  private baseUrl = `https://jsonplaceholder.typicode.com/users`;
-  private headers: {
-    'Accept': 'application/json';
-    'Content-Type': 'application/json';
-  };
+  private baseUrl = `https://jsonplaceholder.typicode.com/`;
 
   public async getUser(credentias: CredentialRequest): Promise<User> {
-    const res = await fetch(this.baseUrl, {
-      method: 'POST',
-      headers: this.headers,
-      body: JSON.stringify(credentias)
-    });
-    const json = await res.json();
+    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/users`, credentias);
     return {
-      ...json,
-      email: credentias.email
+      ...data,
     };
   }
   public async addUser(newUser: NewUser): Promise<User> {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/users/`, {
-      method: 'POST',
-      headers: this.headers,
-      body: JSON.stringify(newUser)
-    });
-    const json = await res.json();
+    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/users`, newUser);
     return {
-      ...json,
+      ...data,
     };
   }
 }
