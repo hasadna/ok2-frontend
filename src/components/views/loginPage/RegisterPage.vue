@@ -62,7 +62,7 @@
           </v-card-text>
           <v-divider light></v-divider>
           <v-card-actions>
-            <v-btn @click.prevent="openLigonModal()" color="black" dark>כבר נרשמת?</v-btn>
+            <v-btn @click.prevent="openLigonModal()" color="black" dark>{{ $language.register.alreadyRegistered  }}?</v-btn>
             <v-spacer></v-spacer>
             <v-btn color="success" @click.prevent="register()">{{ $language.register.register }}</v-btn>
           </v-card-actions>
