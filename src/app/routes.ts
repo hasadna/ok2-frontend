@@ -10,7 +10,7 @@ const routes = [
   },
   {
     path: '/register',
-    name: 'RegisterPage',
+    name: 'register-page',
     component: RegisterPage
   },
   {
