@@ -1,3 +1,4 @@
+import { User, CredentialRequest, NewUser } from './../../../@types/user';
 import UsersService from '../../../services/users.services';
 import { LOGIN } from '../../mutations-types';
 import { ActionContext, ActionTree } from 'vuex';
@@ -39,27 +40,7 @@ export default {
   mutations,
   actions
 };
-export interface User {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  phone: number;
-  // role:string;
-}
+
 export interface UserState {
   user: User | null;
-}
-
-export interface CredentialRequest {
-  email: string;
-  password: string;
-}
-
-export interface NewUser {
-  privateName: string;
-  lastName: string;
-  role: string;
-  email: string;
-  password: string;
 }

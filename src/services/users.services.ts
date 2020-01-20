@@ -1,4 +1,4 @@
-import { User, CredentialRequest, NewUser } from './../store/modules/user/index';
+import { User, CredentialRequest, NewUser  } from './../@types/user';
 import axios from 'axios';
 
 class UsersService {
