@@ -11,12 +11,18 @@
         <div class="mini-blocks-row">
           <div class="mini-block">
             <ul>
-              <li v-for="(e, i) in pastEvents" v-bind:key="i">{{ e.date.toISOString() }} - {{ e.text }}</li>
+              <li
+                v-for="(e, i) in pastEvents"
+                v-bind:key="i"
+              >{{ e.date.toISOString() }} - {{ e.text }}</li>
             </ul>
           </div>
           <div class="mini-block">
             <ul>
-              <li v-for="(e, i) in futureEvents" v-bind:key="i">{{ e.date.toISOString() }} - {{ e.text }}</li>
+              <li
+                v-for="(e, i) in futureEvents"
+                v-bind:key="i"
+              >{{ e.date.toISOString() }} - {{ e.text }}</li>
             </ul>
           </div>
         </div>
@@ -94,9 +100,7 @@ export default {
 .tool-container {
   display: flex;
   flex-direction: column;
-
-  background: #ddd;
-
+  background: var(--v-secondary-base);
   padding: 20px;
 }
 
@@ -112,26 +116,19 @@ export default {
 
 .mini-block {
   flex: 1;
-
-  background: #fdfdfd;
-
+  background: var(--v-secondary-lighten1);
   margin: 10px;
   padding: 20px;
-
   border-radius: 10px;
 }
 
 .tool-body-container {
   flex: 1;
-
   min-height: 30vh;
-
   margin: 10px;
   padding: 20px;
-
   border-radius: 10px;
-
-  background: #fdfdfd;
+  background: var(--v-secondary-lighten1);
 }
 
 .takanon-list {
