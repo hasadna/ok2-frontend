@@ -7,7 +7,6 @@ export interface User {
   // role:string;
 }
 
-
 export interface CredentialRequest {
   email: string;
   password: string;
