@@ -7,7 +7,7 @@
             <v-toolbar-title>{{ $language.register.signUpForm }}</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form form @submit.prevent="register()" id="signup-form">
+            <v-form form @submit.prevent="register()" v-model="valid" id="signup-form" ref="form">
               <v-alert :value="!!alertMsg" color="error" icon="warning">{{alertMsg}}</v-alert>
 
               <v-text-field
@@ -27,6 +27,7 @@
               <v-text-field
                 name="email"
                 v-model="email"
+                type="email"
                 :label="$language.register.email"
                 :rules="[rules.required, rules.email]"
               ></v-text-field>
@@ -34,18 +35,18 @@
               <v-text-field
                 name="password"
                 :label="$language.register.password"
-                :rules="[rules.required]"
+                :rules="[rules.required, rules.password]"
                 type="password"
                 v-model="password"
               ></v-text-field>
 
               <v-text-field
-                name="password"
+                name="confirm_password"
                 :label="$language.register.confirm_password"
                 :rules="[rules.required]"
                 type="password"
                 v-model="confirm_password"
-                :error="!valid()"
+                :error="!isRepaetForm()"
               ></v-text-field>
 
               <v-divider light></v-divider>
@@ -62,9 +63,16 @@
           </v-card-text>
           <v-divider light></v-divider>
           <v-card-actions>
-            <v-btn @click.prevent="openLigonModal()" color="black" dark>כבר נרשמת?</v-btn>
+            <v-btn
+              @click.prevent="openLigonModal()"
+              color="black"
+              dark
+            >{{ $language.register.alreadyRegistered }}?</v-btn>
             <v-spacer></v-spacer>
-            <v-btn color="success" @click.prevent="register()">{{ $language.register.register }}</v-btn>
+            <v-btn
+              color="success"
+              @click.prevent="register()"
+            >{{ $language.register.register }}</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -81,6 +89,7 @@ const lang = Localizer.instance.language;
 export default {
   name: 'RegisterPage',
   data: () => ({
+    valid: true,
     alertMsg: ``,
     privateName: '',
     lastName: '',
@@ -99,6 +108,10 @@ export default {
       email: value => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return pattern.test(value) || 'Invalid e-mail.';
+      },
+      password: value => {
+        const isValid = value && value.length >= 5;
+        return isValid || 'Password must have 5+ characters';
       }
     }
   }),
@@ -107,7 +120,7 @@ export default {
   },
   methods: {
     register() {
-      if (this.valid()) {
+      if (this.isValid()) {
         this.$store.dispatch('signUp', {
           privateName: this.privateName,
           lastName: this.lastName,
@@ -117,8 +130,11 @@ export default {
         });
       }
     },
-    valid() {
+    isRepaetForm() {
       return this.password === this.confirm_password;
+    },
+    isValid() {
+      return this.isRepaetForm() && this.$refs.form.validate();
     },
     openLigonModal() {
       EventBus.$emit(BUSEVENTS.toglleLoginDialog);

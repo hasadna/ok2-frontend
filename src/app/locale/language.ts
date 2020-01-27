@@ -40,6 +40,10 @@ export const language = {
       he: 'הרשמו לכנסת פתוחה 2.0',
       en: 'Sign up'
     },
+    alreadyRegistered: {
+      he: 'כבר נרשמת',
+      en: 'Already Registered'
+    },
     errorMeesge: {
       he: `The username or password are wrong :(`,
       en: `The username or password are wrong :(`

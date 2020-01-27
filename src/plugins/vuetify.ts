@@ -10,14 +10,17 @@ export default new VuetifyLib({
   theme: {
     themes: {
       light: {
-        primary: '#757282',
-        secondary: '#b0bec5',
+        primary: '#26418c',
+        secondary: '#EDEEFF',
         accent: '#8c9eff',
         error: '#b71c1c',
         info: '#2196F3',
         success: '#4CAF50',
         warning: '#FFC107'
       },
+    },
+    options: {
+      customProperties: true,
     },
   }
 });

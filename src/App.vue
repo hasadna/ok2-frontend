@@ -12,7 +12,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app color="primary" clipped-right>
+    <v-app-bar app clipped-right class="header">
       <div class="d-flex align-center">
         <v-app-bar-nav-icon @click.stop="isDrawer = !isDrawer"></v-app-bar-nav-icon>
         <router-link to="/">
@@ -45,7 +45,7 @@
       </v-container>
     </v-content>
 
-    <v-footer app></v-footer>
+      <Footer />
   </v-app>
 </template>
 
@@ -55,6 +55,7 @@ import Logout from './components/shared/Logout';
 import { Localizer } from './app/locale/localizer';
 import { mapGetters } from 'vuex';
 import LanguageSelect from './components/views/layout/LanguageSelect';
+import Footer from './components/views/layout/Footer';
 
 const lang = Localizer.instance.language;
 
@@ -63,7 +64,8 @@ export default {
   components: {
     Login,
     Logout,
-    LanguageSelect
+    LanguageSelect,
+    Footer
   },
   computed: {
     ...mapGetters(['getUser'])
@@ -83,5 +85,8 @@ export default {
 <style scoped>
 * {
   font-family: 'Arimo', sans-serif;
+}
+.header {
+  background: var(--v-primary-lighten5);
 }
 </style>
