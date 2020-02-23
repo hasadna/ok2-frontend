@@ -9,21 +9,9 @@
         placeholder="לדוג' תקציב המדינה, פיתוח הפריפריה"
         type="text"
       ></v-text-field>
-      <v-textarea
-        v-model="text"
-        @input="countChars"
-        outlined
-        :color="status.color"
-        name="text"
-        auto-grow
-        label="תוכן הנאום"
-      ></v-textarea>
-
-      <small :style="{color:`var(${status.var})`}">
-        מס' מילים:
-        {{wordLength}}/300
-      </small>
-      <h6>אורך אופטימלי - 150-250 מילים ולא יותר מ-300)</h6>
+      <v-textarea v-model="text" outlined name="text" auto-grow label="תוכן הנאום"></v-textarea>
+      <CharacterCount :text="text" :wordAmount="wordAmount" />
+      <h6>אורך אופטימלי - {{wordAmount.min}}-{{wordAmount.max}} מילים ולא יותר מ-{{wordAmount.error}}</h6>
       <v-spacer></v-spacer>
 
       <v-row justify="center">
@@ -34,46 +22,26 @@
 </template>
 
 <script>
+import CharacterCount from '../../../shared/CharacterCount.vue';
+
 export default {
+  components: {
+    CharacterCount
+  },
   data: () => ({
     title: ``,
     text: ``,
-    wordLength: 0,
+    wordAmount: {
+      min: 150,
+      max: 250,
+      error: 300
+    },
     status: {
       color: 'gray',
       var: '--v-secondary-darken2'
-    },
-    statuses: [
-      { color: 'gray', var: '--v-secondary-darken2' },
-      { color: 'primary', var: '--v-error-lighten4' },
-      { color: 'success', var: '--v-success-lighten2' },
-      { color: 'warning', var: '--v-warning-darken3' },
-      { color: 'error', var: '--v-error-base' }
-    ]
+    }
   }),
   methods: {
-    countChars() {
-      const words = this.text.split(/[\n\r\s]+/g);
-      words.filter(word => word.length > 0);
-      this.wordLength = words.length;
-      switch (true) {
-        case words.length >= 0 && words.length < 50:
-          this.status = this.statuses[0];
-          break;
-        case words.length >= 51 && words.length < 149:
-          this.status = this.statuses[1];
-          break;
-        case words.length >= 150 && words.length < 250:
-          this.status = this.statuses[2];
-          break;
-        case words.length >= 251 && words.length < 300:
-          this.status = this.statuses[3];
-          break;
-        case words.length >= 300:
-          this.status = this.statuses[4];
-          break;
-      }
-    },
     send() {
       console.log('send');
     }
