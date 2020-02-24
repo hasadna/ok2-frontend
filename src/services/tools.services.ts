@@ -6,7 +6,7 @@ export class ToolsService {
   public getDescription(toolId: ToolId): Promise<string> {
     return new Promise((resolve, reject) => {
       const result = "כל חבר כנסת רשאי לבקש בתחילת ישיבת הכנסת המתקיימת בימים ב' וג' לנאום עד דקה על כל נושא.";
-      setTimeout(() => resolve(result), 2000);
+      setTimeout(() => resolve(result), 100);
     });
   }
 

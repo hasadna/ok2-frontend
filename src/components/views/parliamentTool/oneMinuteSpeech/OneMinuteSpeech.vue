@@ -1,20 +1,22 @@
 <template>
   <div>
     <ParliamentTool v-bind:toolId="toolId">
-      <div>טופס אינטראקטיבי</div>
+      <OneMinuteSpeechForm />
     </ParliamentTool>
   </div>
 </template>
 
 <script lang="ts">
 import ParliamentTool from '../parliamentTool/ParliamentTool.vue';
+import OneMinuteSpeechForm from '../oneMinuteSpeechForm/OneMinuteSpeechForm.vue';
 import { ToolId } from '../../../../store/modules/tool';
 
 export default {
   name: 'OneMinuteSpeech',
 
   components: {
-    ParliamentTool
+    ParliamentTool,
+    OneMinuteSpeechForm
   },
 
   data: () => ({

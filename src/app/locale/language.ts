@@ -96,5 +96,11 @@ export const language = {
       he: 'נאומים בני דקה',
       en: 'One Minute Speech'
     }
+  },
+  form:{
+    send:{
+      he: 'שלח',
+      en: 'Send'
+    }
   }
 };
