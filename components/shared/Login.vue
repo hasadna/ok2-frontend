@@ -19,9 +19,19 @@
             <small>{{ errorMeesge }}</small>
           </v-alert>
           <v-card-text>
-            <v-text-field v-model="email" name="login" label="מייל / שם משתמש" type="text" />
+            <v-text-field
+              v-model="email"
+              name="login"
+              label="מייל / שם משתמש"
+              type="text"
+            />
 
-            <v-text-field v-model="password" name="password" label="סיסמא" type="password" />
+            <v-text-field
+              v-model="password"
+              name="password"
+              label="סיסמא"
+              type="password"
+            />
           </v-card-text>
           <v-divider light />
           <v-card-actions>
@@ -43,7 +53,7 @@
     </v-card>
   </v-dialog>
 </template>
-<script lang="ts">
+<script>
 import { EventBus, BUSEVENTS } from '../../services/bus/bus';
 export default {
   name: 'Login',
@@ -82,5 +92,4 @@ export default {
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

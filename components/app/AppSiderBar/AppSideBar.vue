@@ -2,7 +2,7 @@
   <v-navigation-drawer v-model="isDrawer" app clipped right>
     <v-list nav dense>
       <v-list-item-group>
-        <router-link v-for="menu in menus" :key="menu.link" :to="{path:menu.link}">
+        <router-link v-for="menu in menus" :key="menu.link" :to="{ path: menu.link }">
           <v-list-item>
             <v-list-item-title>{{ menu.name }}</v-list-item-title>
           </v-list-item>
@@ -12,7 +12,7 @@
   </v-navigation-drawer>
 </template>
 
-<script lang="ts">
+<script>
 import { EventBus, BUSEVENTS } from '~/services/bus/bus';
 
 export default {
@@ -25,12 +25,12 @@ export default {
     ]
   }),
   created() {
-    EventBus.$on(BUSEVENTS.toglleIsDrawer, (payload: boolean) => {
+    EventBus.$on(BUSEVENTS.toglleIsDrawer, (payload) => {
       this.setDrawer(payload);
     });
   },
   methods: {
-    setDrawer(is: boolean) {
+    setDrawer(is) {
       this.isDrawer = is;
     }
   }
