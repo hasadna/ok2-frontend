@@ -4,30 +4,14 @@ The frontend of Open Knesset v2.0
 
 ## Project setup
 
-```shell
-npm install
+
+# build for production and launch server
+$ npm run build
+$ npm run start
+
+# generate static project
+$ npm run generate
 ```
-
-### Compile and hot-reloads for development
-
-```shell
-npm run serve
-```
-
-### Compile and minify for production
-
-```shell
-npm run build
-```
-
-### Lint files
-
-Just lint:
-
-```shell
-npm run lint
-```
-
 Lint and fix errors:
 
 ```shell

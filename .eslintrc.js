@@ -6,12 +6,17 @@ module.exports = {
     "es6": true
   },
   "extends": [
+    "plugin:vue/recommended",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:vue/essential",
+    "prettier/vue",
+    "@nuxtjs/eslint-config-typescript"
   ],
   "parserOptions": {
-    "parser": "@typescript-eslint/parser"
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module"
+  },
+  globals: {
+    $nuxt: true
   },
   "rules": {
     "@typescript-eslint/array-type": ["error", {
@@ -64,14 +69,13 @@ module.exports = {
     }],
     "@typescript-eslint/no-use-before-define": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "@typescript-eslint/semi": "error",
     "eqeqeq": ["error", "always"],
     "linebreak-style": "off",
     "no-alert": "error",
     "no-bitwise": "error",
-    "no-console": "off",
+    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-const-assign": "error",
-    "no-debugger": "error",
     "no-multiple-empty-lines": ["error", {
       "max": 1
     }],
@@ -82,6 +86,13 @@ module.exports = {
     "prefer-arrow-callback": "error",
     "prefer-const": "error",
     "prefer-rest-params": "off",
-    "semi": "error"
+    "quotes": [2, "single"],
+    "semi": ["error", "always"],
+    // "@typescript-eslint/semi": "error",
+    'space-before-function-paren': ['error', {
+      anonymous: 'always',
+      named: 'never',
+      asyncArrow: 'always'
+    }]
   }
 }
