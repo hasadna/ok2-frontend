@@ -37,14 +37,12 @@
           <v-card-actions>
             <v-btn
               type="button"
-              color="primary"
-              dark
               @click.prevent="navigateToRegisterPage()"
             >
               הרשמה
             </v-btn>
             <v-spacer />
-            <v-btn color="indigo" dark type="submit" form="login-form">
+            <v-btn color="primary" dark type="submit" form="login-form">
               התחברות
             </v-btn>
           </v-card-actions>
@@ -75,7 +73,7 @@ export default {
     login() {
       this.errorMeesge = '';
       try {
-        this.$store.dispatch('logIn', {
+        this.$store.dispatch('user/logIn', {
           email: this.email,
           password: this.password
         });

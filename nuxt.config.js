@@ -2,7 +2,7 @@ export default {
   mode: 'universal',
   head: {
     titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    title: 'כנסת פתוחה 2.0',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -19,6 +19,7 @@ export default {
     '~/assets/styles/main.scss'
   ],
   plugins: [
+    '~/plugins/axios'
   ],
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
@@ -28,8 +29,20 @@ export default {
     '@nuxtjs/axios'
 
   ],
-
-  modules: [],
+  modules: [
+    '@nuxtjs/proxy',
+    '@nuxtjs/axios'
+  ],
+  proxy: {
+    '/api/': {
+      target: 'http:/localhost/8000/',
+      pathRewrite: { '^/api/': '' },
+      changeOrigin: true
+    }
+  },
+  axios: {
+    proxy: true
+  },
   vuetify: {
     rtl: true,
     customVariables: ['~/assets/variables.scss'],
@@ -62,4 +75,5 @@ export default {
       eslint: true
     }
   }
+
 };
