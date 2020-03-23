@@ -74,7 +74,7 @@ export default {
       this.errorMeesge = '';
       try {
         this.$store.dispatch('user/logIn', {
-          email: this.email,
+          username: this.email,
           password: this.password
         });
         this.dialog = false;
