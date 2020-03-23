@@ -115,7 +115,7 @@ export default {
   methods: {
     register() {
       if (this.isValid()) {
-        this.$store.dispatch('signUp', {
+        this.$store.dispatch('user/signUp', {
           privateName: this.privateName,
           lastName: this.lastName,
           role: this.role,

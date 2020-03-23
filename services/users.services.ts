@@ -4,8 +4,15 @@ import { User, CredentialRequest, NewUser } from '~/app/types/user';
 class UsersService {
   private baseUrl = '';
 
+  // public async getUser(credentias: CredentialRequest): Promise<User> {
+  //   const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/login`, credentias);
+  //   return {
+  //     ...data
+  //   };
+  // }
+
   public async getUser(credentias: CredentialRequest): Promise<User> {
-    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/login`, credentias);
+    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}`);
     return {
       ...data
     };

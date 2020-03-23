@@ -18,7 +18,9 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['logOut'])
+    ...mapActions({
+      logOut: 'user/logOut'
+    })
   }
 };
 </script>
