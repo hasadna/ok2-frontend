@@ -32,9 +32,9 @@ export default {
     menus: [
       { name: 'דף הבית', link: '/' },
       { name: 'ח"כים וסיעות', link: '' },
-      { name: 'ועדות', link: '//' }
-    ]
-  })
+      { name: 'ועדות', link: '//' },
+    ],
+  }),
 };
 </script>
 

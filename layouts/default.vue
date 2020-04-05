@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app class="App">
     <AppHeader />
     <AppSideBar />
     <v-content>
@@ -20,10 +20,10 @@ export default {
   components: {
     AppFooter,
     AppHeader,
-    AppSideBar
+    AppSideBar,
   },
   data() {
     return {};
-  }
+  },
 };
 </script>

@@ -20,35 +20,35 @@ export default {
   props: {
     text: {
       type: String,
-      default: ''
+      default: '',
     },
     wordAmount: {
       type: {
         error: '',
         min: 0,
-        max: 300
+        max: 300,
       },
-      default: ''
-    }
+      default: '',
+    },
   },
   data: () => ({
     wordLength: 0,
     status: {
       color: 'gray',
-      var: '--v-secondary-darken2'
+      var: '--v-secondary-darken2',
     },
     statuses: [
       { color: 'gray', var: '--v-secondary-darken2' },
       { color: 'primary', var: '--v-error-lighten4' },
       { color: 'success', var: '--v-success-lighten2' },
       { color: 'warning', var: '--v-warning-darken3' },
-      { color: 'error', var: '--v-error-base' }
-    ]
+      { color: 'error', var: '--v-error-base' },
+    ],
   }),
   watch: {
     text(newVal, oldVal) {
       this.countChars();
-    }
+    },
   },
   methods: {
     countChars() {
@@ -75,8 +75,8 @@ export default {
           break;
       }
       this.$emit('statusChanged', this.status);
-    }
-  }
+    },
+  },
 };
 </script>
 

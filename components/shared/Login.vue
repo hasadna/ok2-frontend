@@ -59,7 +59,7 @@ export default {
     dialog: false,
     email: '',
     password: '',
-    errorMeesge: ''
+    errorMeesge: '',
   }),
   created() {
     EventBus.$on(BUSEVENTS.toglleLoginDialog, () => {
@@ -75,7 +75,7 @@ export default {
       try {
         this.$store.dispatch('user/logIn', {
           username: this.email,
-          password: this.password
+          password: this.password,
         });
         this.dialog = false;
       } catch (e) {
@@ -85,8 +85,8 @@ export default {
     navigateToRegisterPage() {
       this.$router.push('register');
       this.dialog = false;
-    }
-  }
+    },
+  },
 };
 </script>
 

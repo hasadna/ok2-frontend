@@ -23,8 +23,8 @@ export default {
     return {
       title: 'עמוד הבית',
       description: 'ברוכים הבאים לאתר כנסת פתוחה 2.0',
-      meta: [{ name: 'twitter:title', contnet: 'כנסת פתוחה 2.0' }]
+      meta: [{ name: 'twitter:title', contnet: 'כנסת פתוחה 2.0' }],
     };
-  }
+  },
 };
 </script>

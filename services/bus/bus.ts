@@ -4,5 +4,5 @@ export const EventBus = new Vue();
 
 export const BUSEVENTS = {
   toglleLoginDialog: 'toglleLoginDialog',
-  toglleIsDrawer: 'toglleIsDrawer'
+  toglleIsDrawer: 'toglleIsDrawer',
 };

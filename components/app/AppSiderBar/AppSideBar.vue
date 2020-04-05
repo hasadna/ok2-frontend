@@ -21,8 +21,8 @@ export default {
     isDrawer: false,
     menus: [
       { name: 'עמוד הבית', link: '/' },
-      { name: 'נאומים בני דקה', link: 'tools/one-minute-speech' }
-    ]
+      { name: 'נאומים בני דקה', link: 'tools/one-minute-speech' },
+    ],
   }),
   created() {
     EventBus.$on(BUSEVENTS.toglleIsDrawer, (payload) => {
@@ -32,8 +32,8 @@ export default {
   methods: {
     setDrawer(is) {
       this.isDrawer = is;
-    }
-  }
+    },
+  },
 };
 </script>
 

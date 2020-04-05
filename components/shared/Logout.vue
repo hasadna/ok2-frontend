@@ -14,14 +14,14 @@ export default {
   name: 'Logout',
   computed: {
     ...mapGetters({
-      user: 'user/getUser'
-    })
+      user: 'user/getUser',
+    }),
   },
   methods: {
     ...mapActions({
-      logOut: 'user/logOut'
-    })
-  }
+      logOut: 'user/logOut',
+    }),
+  },
 };
 </script>
 

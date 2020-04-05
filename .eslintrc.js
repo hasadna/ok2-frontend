@@ -103,6 +103,7 @@ module.exports = {
     'prefer-const': 'error',
     'prefer-rest-params': 'off',
     quotes: [2, 'single'],
+    'comma-dangle': ['error', 'only-multiline'],
     semi: ['error', 'always'],
     // "@typescript-eslint/semi": "error",
     'space-before-function-paren': [

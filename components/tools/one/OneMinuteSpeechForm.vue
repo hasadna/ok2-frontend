@@ -30,7 +30,7 @@ import CharacterCount from '~/components/shared/CharacterCount.vue';
 
 export default {
   components: {
-    CharacterCount
+    CharacterCount,
   },
   data: () => ({
     title: '',
@@ -38,18 +38,18 @@ export default {
     wordAmount: {
       min: 150,
       max: 250,
-      error: 300
+      error: 300,
     },
     status: {
       color: 'gray',
-      var: '--v-secondary-darken2'
-    }
+      var: '--v-secondary-darken2',
+    },
   }),
   methods: {
     send() {
       console.log('send');
-    }
-  }
+    },
+  },
 };
 </script>
 

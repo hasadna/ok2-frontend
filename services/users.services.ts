@@ -7,14 +7,14 @@ class UsersService {
   public async getUser(credentias: CredentialRequest): Promise<User> {
     const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/login`, credentias);
     return {
-      ...data
+      ...data,
     };
   }
 
   public async addUser(newUser: NewUser): Promise<User> {
     const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/users`, newUser);
     return {
-      ...data
+      ...data,
     };
   }
 }

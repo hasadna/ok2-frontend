@@ -9,71 +9,75 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
-      }
+        content: process.env.npm_package_description || '',
+      },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+    ],
   },
   loading: { color: '#fff' },
   css: [
-    '~/assets/styles/main.scss'
+    '~/assets/styles/main.scss',
   ],
   plugins: [
-    '~/plugins/axios'
+    '~/plugins/axios',
   ],
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
     '@nuxt/typescript-build',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
 
   ],
   modules: [
     '@nuxtjs/proxy',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
   ],
   proxy: {
     '/api/': {
       target: 'http:/localhost/8000/',
       pathRewrite: { '^/api/': '' },
-      changeOrigin: true
-    }
+      changeOrigin: true,
+    },
   },
   axios: {
-    proxy: true
+    proxy: true,
   },
   vuetify: {
     rtl: true,
-    customVariables: ['~/assets/variables.scss'],
+    customVariables: [
+      '~/assets/variables.scss',
+    ],
     theme: {
       dark: false,
       themes: {
         themes: {
           light: {
-            primary: '#26418c',
+            primary: '#25408F',
             secondary: '#EDEEFF',
             accent: '#8c9eff',
             error: '#b71c1c',
             info: '#2196F3',
             success: '#4CAF50',
-            warning: '#FFC107'
-          }
+            warning: '#FFC107',
+          },
         },
         options: {
-          customProperties: true
-        }
-      }
-    }
+          customProperties: true,
+        },
+      },
+    },
   },
 
   build: {
-    extend(config, ctx) { }
+    extend(config, ctx) { },
   },
   typescript: {
     typeCheck: {
-      eslint: true
-    }
-  }
+      eslint: true,
+    },
+  },
 
 };

@@ -58,8 +58,8 @@ export default {
   props: {
     toolId: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   data: () => ({
@@ -69,7 +69,7 @@ export default {
     didYouKnow: [],
     pastEvents: [],
     futureEvents: [],
-    takanon: []
+    takanon: [],
   }),
 
   created() {
@@ -97,8 +97,8 @@ export default {
       } catch (e) {
         console.error(e);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped lang="scss">

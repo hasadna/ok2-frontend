@@ -16,14 +16,14 @@ export default {
 
   components: {
     ParliamentTool,
-    OneMinuteSpeechForm
+    OneMinuteSpeechForm,
   },
 
   data: () => ({
-    toolId: ToolId.OneMinuteSpeech
+    toolId: ToolId.OneMinuteSpeech,
   }),
 
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped lang="scss">
