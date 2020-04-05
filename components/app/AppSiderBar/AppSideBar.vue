@@ -31,7 +31,8 @@ export default {
   },
   methods: {
     setDrawer(is) {
-      this.isDrawer = is;
+      this.isDrawer = false; // TODO: only show in mobile
+      // this.isDrawer = is;
     },
   },
 };

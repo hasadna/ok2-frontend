@@ -1,17 +1,12 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600px">
-    <template v-slot:activator="{ on }">
-      <v-btn text v-on="on">
-        <v-icon>mdi-account</v-icon>
-      </v-btn>
-    </template>
     <v-card>
       <v-form id="login-form" @submit.prevent="login()">
         <v-card class="elevation-12">
           <v-toolbar dark color="blue">
             <v-toolbar-title>התחברות</v-toolbar-title>
             <v-spacer />
-            <v-btn text @click="dialog = false">
+            <v-btn text @click="dialogState(false)">
               <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>
@@ -55,20 +50,25 @@
 import { EventBus, BUSEVENTS } from '../../services/bus/bus';
 export default {
   name: 'Login',
+  props: {
+    dialog: {
+      type: Boolean,
+      required: true
+    }
+  },
   data: () => ({
-    dialog: false,
     email: '',
     password: '',
     errorMeesge: '',
   }),
   created() {
     EventBus.$on(BUSEVENTS.toglleLoginDialog, () => {
-      this.toglleDialog();
+      this.dialogState(!this.dialog);
     });
   },
   methods: {
-    toglleDialog() {
-      this.dialog = !this.dialog;
+    dialogState(state) {
+      this.$emit('update:dialog', state);
     },
     login() {
       this.errorMeesge = '';
@@ -77,14 +77,14 @@ export default {
           username: this.email,
           password: this.password,
         });
-        this.dialog = false;
+        this.dialogState(false);
       } catch (e) {
         this.errorMeesge = 'שגיאת שרת';
       }
     },
     navigateToRegisterPage() {
       this.$router.push('register');
-      this.dialog = false;
+      this.dialogState(false);
     },
   },
 };

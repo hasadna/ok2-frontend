@@ -86,6 +86,9 @@
 .ltr {
   direction: ltr;
 }
+.fs18 {
+  font-size: 18px;
+}
 
 .fa,
 .fab,
@@ -120,5 +123,11 @@
 
 // ok proj
 .ok-color {
-  color: $okColor;
+  color: $ok-color;
+}
+.black--text {
+  color: #212121;
+  a {
+    color: #212121;
+  }
 }

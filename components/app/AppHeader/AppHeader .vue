@@ -2,45 +2,38 @@
   <v-app-bar app clipped-right class="header">
     <nuxt-link to="/" class="d-flex align-center">
       <span class="svg block" v-html="logo" />
-      <h1 class="ok-color display-1 ">
+      <h1 class="ok-color display-1 mr-2">
         כנסת פתוחה
       </h1>
     </nuxt-link>
     <!-- <v-app-bar-nav-icon @click="toglleIsDrawer()" /> -->
     <v-spacer />
-    <main-menu />
+    <main-menu class="row-1-1" />
     <v-spacer />
 
-    <Login v-if="!user" />
-    <Logout v-if="user" />
+    <AppHeaderUser />
 
     <v-menu bottom right />
   </v-app-bar>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import Login from '~/components/shared/Login.vue';
+
 import MainMenu from '~/components/shared/MainMenu.vue';
-import Logout from '~/components/shared/Logout.vue';
+import AppHeaderUser from '~/components/app/AppHeader/AppHeaderUser.vue';
 import { BUSEVENTS, EventBus } from '~/services/bus/bus.ts';
 import { getSvg } from '~/app/utils/svgs.ts';
 export default {
   name: 'AppHeader',
   components: {
-    Login,
-    Logout,
     MainMenu,
+    AppHeaderUser
   },
   data: () => ({
     isDrawer: false,
     logo: getSvg('logo'),
   }),
-  computed: {
-    ...mapGetters({
-      user: 'user/getUser',
-    }),
-  },
+
   methods: {
     toglleIsDrawer() {
       this.isDrawer = !this.isDrawer;
@@ -57,6 +50,6 @@ export default {
   background: #EBEBEB;
 }
 h1{
-  margin-right: 8px;
+  // margin-right: 8px;
 }
 </style>
