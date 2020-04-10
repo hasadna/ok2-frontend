@@ -13,5 +13,6 @@
 // Vendor: handles 3rd party css
 
 // Components: have a single scss file for each individual component
+@import "./components/form.scss";
 
 @import "./mobile.scss";
