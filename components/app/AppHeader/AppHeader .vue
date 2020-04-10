@@ -14,12 +14,14 @@
     <AppHeaderUser />
 
     <v-menu bottom right />
+    <Toastr />
   </v-app-bar>
 </template>
 
 <script>
 
 import MainMenu from '~/components/shared/MainMenu.vue';
+import Toastr from '~/components/shared/Toastr.vue';
 import AppHeaderUser from '~/components/app/AppHeader/AppHeaderUser.vue';
 import { BUSEVENTS, EventBus } from '~/services/bus/bus.ts';
 import { getSvg } from '~/app/utils/svgs.ts';
@@ -27,7 +29,8 @@ export default {
   name: 'AppHeader',
   components: {
     MainMenu,
-    AppHeaderUser
+    AppHeaderUser,
+    Toastr
   },
   data: () => ({
     isDrawer: false,

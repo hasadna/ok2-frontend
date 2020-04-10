@@ -6,7 +6,11 @@
           <v-toolbar color="#FFFFFF" flat>
             <v-toolbar-title>התחברות לכנסת פתוחה</v-toolbar-title>
             <v-spacer />
-            <v-btn text @click="dialogState(false)">
+            <v-btn
+              color="#fff"
+              flat
+              @click="dialogState(false)"
+            >
               <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>

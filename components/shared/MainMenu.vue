@@ -1,11 +1,13 @@
 <template>
-  <ul class="d-flex justify-center row-1-1">
-    <li v-for="menu in menus" :key="menu.href" :class="{'active':isActive(menu.href)}" class="px-4 tac black--text row-1-1 d-flex justify-center flex-column fs18">
-      <nuxt-link :to="menu.href">
-        {{ menu.name }}
-      </nuxt-link>
-    </li>
-  </ul>
+  <nav>
+    <ul class="d-flex justify-center row-1-1">
+      <li v-for="menu in menus" :key="menu.href" :class="{'active':isActive(menu.href)}" class="px-4 tac black--text row-1-1 d-flex justify-center flex-column fs18">
+        <nuxt-link :to="menu.href">
+          {{ menu.name }}
+        </nuxt-link>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>

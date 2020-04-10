@@ -25,7 +25,8 @@
 import { mapGetters } from 'vuex';
 import Login from '~/components/shared/Login.vue';
 import Logout from '~/components/shared/Logout.vue';
-
+import { ToasterEnum } from '~/app/enums/toaster.enum.ts';
+import { Ls, isPleaseRegister } from '~/app/utils/localStorage.ts';
 export default {
   name: 'AppHeaderUser',
   components: {
@@ -41,6 +42,12 @@ export default {
     ...mapGetters({
       user: 'user/getUser',
     }),
+  },
+  mounted() {
+    if (!this.user && Ls.get(isPleaseRegister)) {
+      Ls.set(isPleaseRegister, true);
+      this.$store.dispatch('ui/setToastr', ToasterEnum.pleaseRegister);
+    }
   },
   methods: {
     toglleForm() {
