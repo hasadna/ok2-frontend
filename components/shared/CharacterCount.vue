@@ -1,7 +1,7 @@
 <template>
   <div class="counter">
     <small
-      :style="{color:`var(${status.var})`, fontWeight: wordLength >= wordAmount.error ? 'bold' : '300'}"
+      :style="{color:`${status.color}`, fontWeight: wordLength >= wordAmount.error ? 'bold' : '300'}"
     >
       <v-icon
         v-if="wordLength >=wordAmount.min && wordLength<=wordAmount.max"
@@ -41,15 +41,15 @@ export default {
     },
     statuses: [
       { color: 'gray', var: '--v-secondary-darken2' },
-      { color: 'primary', var: '--v-error-lighten4' },
-      { color: 'success', var: '--v-success-lighten2' },
-      { color: 'warning', var: '--v-warning-darken3' },
-      { color: 'error', var: '--v-error-base' },
+      { color: 'blue', var: '--v-error-lighten4' },
+      { color: 'green', var: '--v-success-lighten2' },
+      { color: '#adad00', var: '--v-warning-darken3' },
+      { color: 'red', var: '--v-error-base' },
     ],
   }),
   watch: {
     text(newVal, oldVal) {
-      // this.countChars();
+      this.countChars();
     },
   },
   methods: {
@@ -82,5 +82,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.counter{
+  font-size: 14px;
+}
 </style>

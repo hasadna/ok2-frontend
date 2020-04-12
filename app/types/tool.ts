@@ -4,7 +4,7 @@ export enum ToolId {
   StandardQuery = 'StandardQuery',
   UrgentQuery = 'UrgentQuery',
   DirectQuery = 'DirectQuery',
-  SuggestionToOrder = 'SuggestionToOrder'
+  GenrealAgenda = 'GenrealAgenda'
 }
 
 export interface ToolEvent {

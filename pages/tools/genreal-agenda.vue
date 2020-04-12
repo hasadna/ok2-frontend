@@ -1,13 +1,13 @@
 <template>
   <div class="d-flex justify-space-between">
-    <OneMinuteSpeechForm class="half" />
+    <GeneralAgendForm class="half" />
     <ParliamentTool :tool-id="toolId" class="half" />
   </div>
 </template>
 
 <script lang="ts">
 import ParliamentTool from '~/components/tools/ParliamentTool.vue';
-import OneMinuteSpeechForm from '~/components/tools/one/OneMinuteSpeechForm.vue';
+import GeneralAgendForm from '~/components/tools/agenda/GeneralAgendForm.vue';
 import { ToolId } from '~/app/types/tool';
 
 export default {
@@ -15,11 +15,11 @@ export default {
   transition: 'default',
   components: {
     ParliamentTool,
-    OneMinuteSpeechForm,
+    GeneralAgendForm,
   },
 
   data: () => ({
-    toolId: ToolId.OneMinuteSpeech,
+    toolId: ToolId.GenrealAgenda,
   }),
 
   methods: {},

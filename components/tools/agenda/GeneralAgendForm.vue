@@ -1,7 +1,7 @@
 <template>
-  <section class="form__warpper">
+  <section class="form__wrapper">
     <v-form @submit.prevent="send()">
-      <h2 class="text-center">
+      <h2 class="form__title">
         הגשת הצעה לסדר יום
       </h2>
       <hr class="hr">

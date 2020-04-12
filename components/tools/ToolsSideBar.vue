@@ -19,6 +19,7 @@ export default {
   data: () => ({
     menus: [
       { name: 'שאילתות ונאומים בני דקה', link: 'one-minute-speech' },
+      { name: 'הצעות לסדר יום', link: 'genreal-agenda' },
     ],
   }),
 };
