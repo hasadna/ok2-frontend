@@ -86,7 +86,7 @@ export default {
         this.description = await toolsService.getDescription(theToolId);
         this.didYouKnow = await toolsService.getDidYouKnow(theToolId);
 
-        const toolEvents = await toolsService.getEvents(theToolId)
+        const toolEvents = await toolsService.getEvents(theToolId);
         const now = new Date();
         this.pastEvents = toolEvents.filter(e => e.date < now);
         this.futureEvents = toolEvents.filter(e => e.date > now);
