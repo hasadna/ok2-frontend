@@ -95,6 +95,7 @@ module.exports = {
         max: 1
       }
     ],
+    'vue/no-v-html': 'never',
     'no-unreachable': 'warn',
     'no-var': 'error',
     'nonblock-statement-body-position': ['error', 'below'],

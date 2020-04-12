@@ -2,9 +2,9 @@
   <v-app class="App">
     <AppHeader />
     <AppSideBar />
-    <v-content>
-      <v-container fluid>
-        <router-view />
+    <v-content >
+      <v-container fluid class="height-1-1">
+        <router-view class="height-1-1" />
       </v-container>
     </v-content>
     <AppFooter />

@@ -44,7 +44,7 @@ export default {
     }),
   },
   mounted() {
-    if (!this.user && Ls.get(isPleaseRegister)) {
+    if (!this.user && !Ls.get(isPleaseRegister)) {
       Ls.set(isPleaseRegister, true);
       this.$store.dispatch('ui/setToastr', ToasterEnum.pleaseRegister);
     }
