@@ -23,12 +23,14 @@ export default {
       default: '',
     },
     wordAmount: {
-      type: {
-        error: '',
-        min: 0,
-        max: 300,
-      },
-      default: '',
+      type: Object,
+      default() {
+        return {
+          min: 150,
+          max: 250,
+          error: 300,
+        };
+      }
     },
   },
   data: () => ({
@@ -47,7 +49,7 @@ export default {
   }),
   watch: {
     text(newVal, oldVal) {
-      this.countChars();
+      // this.countChars();
     },
   },
   methods: {
