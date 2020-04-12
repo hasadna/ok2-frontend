@@ -94,7 +94,7 @@ export default {
       { name: 'יועץ/ת' },
       { name: 'אקטיביסט/ת' },
       { name: 'חבר כנסת' },
-      { name: 'אחר' }
+      { name: 'אחר' },
     ],
     role: null,
     rules: {
@@ -106,8 +106,8 @@ export default {
       password: (value) => {
         const isValid = value && value.length >= 5;
         return isValid || 'יש להזין 5 תווים לפחות';
-      }
-    }
+      },
+    },
   }),
   created() {
     this.role = this.roles[0].name;
@@ -115,12 +115,12 @@ export default {
   methods: {
     register() {
       if (this.isValid()) {
-        this.$store.dispatch('signUp', {
+        this.$store.dispatch('user/signUp', {
           privateName: this.privateName,
           lastName: this.lastName,
           role: this.role,
           email: this.email,
-          password: this.password
+          password: this.password,
         });
       }
     },
@@ -132,8 +132,8 @@ export default {
     },
     openLigonModal() {
       EventBus.$emit(BUSEVENTS.toglleLoginDialog);
-    }
-  }
+    },
+  },
 };
 </script>
 

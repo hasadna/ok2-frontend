@@ -95,6 +95,7 @@ module.exports = {
         max: 1
       }
     ],
+    'vue/no-v-html': 0,
     'no-unreachable': 'warn',
     'no-var': 'error',
     'nonblock-statement-body-position': ['error', 'below'],
@@ -103,6 +104,7 @@ module.exports = {
     'prefer-const': 'error',
     'prefer-rest-params': 'off',
     quotes: [2, 'single'],
+    'comma-dangle': ['error', 'only-multiline'],
     semi: ['error', 'always'],
     // "@typescript-eslint/semi": "error",
     'space-before-function-paren': [

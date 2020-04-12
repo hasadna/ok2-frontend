@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="isDrawer" app clipped right>
+  <v-navigation-drawer v-model="isDrawer" disable-resize-watcher app clipped right>
     <v-list nav dense>
       <v-list-item-group>
         <router-link v-for="menu in menus" :key="menu.link" :to="{ path: menu.link }">
@@ -21,8 +21,8 @@ export default {
     isDrawer: false,
     menus: [
       { name: 'עמוד הבית', link: '/' },
-      { name: 'נאומים בני דקה', link: 'tools/one-minute-speech' }
-    ]
+      { name: 'נאומים בני דקה', link: 'tools/one-minute-speech' },
+    ],
   }),
   created() {
     EventBus.$on(BUSEVENTS.toglleIsDrawer, (payload) => {
@@ -32,8 +32,8 @@ export default {
   methods: {
     setDrawer(is) {
       this.isDrawer = is;
-    }
-  }
+    },
+  },
 };
 </script>
 

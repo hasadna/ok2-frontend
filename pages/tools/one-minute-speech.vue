@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <ParliamentTool :tool-id="toolId">
-      <OneMinuteSpeechForm />
-    </ParliamentTool>
+  <div class="d-flex justify-space-between">
+    <OneMinuteSpeechForm class="half" />
+    <ParliamentTool :tool-id="toolId" class="half" />
   </div>
 </template>
 
@@ -13,18 +12,22 @@ import { ToolId } from '~/app/types/tool';
 
 export default {
   name: 'OneMinuteSpeech',
-
+  transition: 'default',
   components: {
     ParliamentTool,
-    OneMinuteSpeechForm
+    OneMinuteSpeechForm,
   },
 
   data: () => ({
-    toolId: ToolId.OneMinuteSpeech
+    toolId: ToolId.OneMinuteSpeech,
   }),
 
-  methods: {}
+  methods: {},
 };
 </script>
 <style scoped lang="scss">
+.half{
+  max-width: 49%;
+  flex:1 0 49%;
+}
 </style>

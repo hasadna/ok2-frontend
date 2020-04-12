@@ -4,15 +4,15 @@
       Loading...
     </div>
     <div v-else class="tool-container">
-      <h1>{{ title }}</h1>
+      <h2>{{ title }}</h2>
       <div class="mini-blocks-container">
-        <div class="mini-blocks-row">
+        <div class="d-flex">
           <div class="mini-block">
             {{ description }}
           </div>
         </div>
 
-        <div class="mini-blocks-row">
+        <div class="d-flex">
           <div class="mini-block">
             <ul>
               <li v-for="(e, i) in pastEvents" :key="i">
@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="mini-blocks-row">
+        <div class="d-flex">
           <div class="mini-block">
             <h4>מתוך תקנון הכנסת</h4>
             <ul class="takanon-list">
@@ -58,8 +58,8 @@ export default {
   props: {
     toolId: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
 
   data: () => ({
@@ -69,7 +69,7 @@ export default {
     didYouKnow: [],
     pastEvents: [],
     futureEvents: [],
-    takanon: []
+    takanon: [],
   }),
 
   created() {
@@ -97,53 +97,10 @@ export default {
       } catch (e) {
         console.error(e);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped lang="scss">
-.tool-container {
-  display: flex;
-  flex-direction: column;
-  background: var(--v-secondary-base);
-  padding: 20px;
-}
 
-.mini-blocks-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.mini-blocks-row {
-  display: flex;
-}
-
-.mini-block {
-  flex: 1;
-  background: var(--v-secondary-lighten1);
-  margin: 10px;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.tool-body-container {
-  flex: 1;
-  min-height: 30vh;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 10px;
-  background: var(--v-secondary-lighten1);
-}
-
-.takanon-list {
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 19px;
-  list-style-type: hebrew;
-  margin: 0 30px;
-
-  & li {
-    margin: 10px 0 15px 0;
-  }
-}
 </style>

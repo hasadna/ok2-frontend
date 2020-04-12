@@ -1,7 +1,7 @@
 <template>
   <div class="counter">
     <small
-      :style="{color:`var(${status.var})`, fontWeight: wordLength >= wordAmount.error ? 'bold' : '300'}"
+      :style="{color:`${status.color}`, fontWeight: wordLength >= wordAmount.error ? 'bold' : '300'}"
     >
       <v-icon
         v-if="wordLength >=wordAmount.min && wordLength<=wordAmount.max"
@@ -20,35 +20,37 @@ export default {
   props: {
     text: {
       type: String,
-      default: ''
+      default: '',
     },
     wordAmount: {
-      type: {
-        error: '',
-        min: 0,
-        max: 300
-      },
-      default: ''
-    }
+      type: Object,
+      default() {
+        return {
+          min: 150,
+          max: 250,
+          error: 300,
+        };
+      }
+    },
   },
   data: () => ({
     wordLength: 0,
     status: {
       color: 'gray',
-      var: '--v-secondary-darken2'
+      var: '--v-secondary-darken2',
     },
     statuses: [
       { color: 'gray', var: '--v-secondary-darken2' },
-      { color: 'primary', var: '--v-error-lighten4' },
-      { color: 'success', var: '--v-success-lighten2' },
-      { color: 'warning', var: '--v-warning-darken3' },
-      { color: 'error', var: '--v-error-base' }
-    ]
+      { color: 'blue', var: '--v-error-lighten4' },
+      { color: 'green', var: '--v-success-lighten2' },
+      { color: '#adad00', var: '--v-warning-darken3' },
+      { color: 'red', var: '--v-error-base' },
+    ],
   }),
   watch: {
     text(newVal, oldVal) {
       this.countChars();
-    }
+    },
   },
   methods: {
     countChars() {
@@ -75,10 +77,13 @@ export default {
           break;
       }
       this.$emit('statusChanged', this.status);
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.counter{
+  font-size: 14px;
+}
 </style>

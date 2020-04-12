@@ -1,24 +1,45 @@
 <template>
-  <section class="form__warpper">
+  <section class="form__wrapper">
     <v-form @submit.prevent="send()">
-      <legend class="text-center">
+      <h2 class="form__title">
         שליחת הצעה לנאום בן דקה
-      </legend>
-      <v-text-field
+      </h2>
+      <hr class="hr">
+      <small class="d-block form__small">
+        נושא הנאום
+      </small>
+      <ok-input
         v-model="title"
         name="title"
-        label="נושא הנאום"
         placeholder="לדוג' תקציב המדינה, פיתוח הפריפריה"
         type="text"
+        class="mb-4"
       />
-      <v-textarea v-model="text" outlined name="text" auto-grow label="תוכן הנאום" />
-      <CharacterCount :text="text" :word-amount="wordAmount" />
-      <h6>אורך אופטימלי - {{ wordAmount.min }}-{{ wordAmount.max }} מילים ולא יותר מ-{{ wordAmount.error }}</h6>
+      <small class="d-block form__small">
+        תוכן הנאום
+        <span class="mr-1">
+          (אורך אופטימלי - {{ wordAmount.min }}-{{ wordAmount.max }} מילים ולא יותר מ-{{ wordAmount.error }})
+        </span>
+      </small>
+      <v-textarea
+        v-model="content"
+        solo
+        no-resize
+        name="text"
+        background-color="#D3D3D3"
+        auto-grow
+      />
+
+      <CharacterCount :text="content" :word-amount="wordAmount" style="margin-top: -20px;" />
       <v-spacer />
 
       <v-row justify="center">
-        <v-btn color="indigo" dark type="submit">
-          {{ $language.form.send }}
+        <v-btn
+          class="mr-auto ml-2 text--white"
+          type="submit"
+          background-color="#D3D3D3"
+        >
+          שליחה
         </v-btn>
       </v-row>
     </v-form>
@@ -27,39 +48,35 @@
 
 <script lang="ts">
 import CharacterCount from '~/components/shared/CharacterCount.vue';
+import OkInput from '~/components/shared/form/OkInput.vue';
 
 export default {
   components: {
-    CharacterCount
+    CharacterCount,
+    OkInput,
   },
   data: () => ({
     title: '',
-    text: '',
+    content: '',
     wordAmount: {
       min: 150,
       max: 250,
-      error: 300
+      error: 300,
     },
     status: {
       color: 'gray',
-      var: '--v-secondary-darken2'
-    }
+      var: '--v-secondary-darken2',
+    },
   }),
   methods: {
     send() {
-      console.log('send');
-    }
-  }
+      const form = { title: this.title, content: this.content };
+      console.log(form);
+    },
+  },
 };
 </script>
 
-<style>
-legend {
-  display: block;
-  margin-bottom: 2rem;
-}
-small {
-  margin: -25px 0 15px;
-  display: block;
-}
+<style lang="scss" scoped>
+
 </style>

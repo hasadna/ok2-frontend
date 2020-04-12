@@ -1,12 +1,30 @@
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
+// fonts
+@import "~vuetify/src/styles/styles.sass";
+
+$body-font-family: OpenSansHebrew, sans-serif;
+$heading-font-family: OpenSansHebrew, serif;
+
 $baseFontSize: 16;
+:root {
+  --prim-gray: #e5e5e5;
+  --light-gray: #ebebeb;
+  --dark-gray: #d3d3d3;
+  --ok-color: #25408f;
+}
+
+$prim-gray: var(--prim-gray);
+$light-gray: var(--light-gray);
+$dark-gray: var(--dark-gray);
+$ok-color: var(--ok-color);
+
 $black: #1d1d1d;
 $white: #f2f2f2;
-$gray: rgba(242, 242, 242, 0.712);
 $red: #cb5858;
+
 $mobile: "(max-width: 960px),(max-device-width: 760px),(orientation: portrait)";
 html {
-  font-size: $baseFontSize;
+  font-size: #{$baseFontSize}px;
   font-size: 1.11vw;
 }
 body {
