@@ -1,20 +1,20 @@
 <template>
   <section role="search" class="mb-8">
-    <form action="#" method="get" @submit.prevent="doSearch" class="relative d-flex form-search">
-        <button type="submit" title="חפש כלי או תקנה" class="mx-4">
-          <v-icon>  mdi-magnify</v-icon>
-        </button>
-        <label for="s" class="full">
-          <input
-           class="full"
-            v-model="input"
-            type="search"
-            name="s"
-            placeholder="חפש כלי או תקנה"
-            maxlength="200"
-            @input="debounceInput"
-          >
-        </label>
+    <form action="#" method="get" class="relative d-flex form-search" @submit.prevent="doSearch">
+      <button type="submit" title="חפש כלי או תקנה" class="mx-4">
+        <v-icon>  mdi-magnify</v-icon>
+      </button>
+      <label for="s" class="full">
+        <input
+          v-model="input"
+          class="full"
+          type="search"
+          name="s"
+          placeholder="חפש כלי או תקנה"
+          maxlength="200"
+          @input="debounceInput"
+        >
+      </label>
     </form>
   </section>
 </template>

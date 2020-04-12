@@ -31,7 +31,8 @@ export default {
   }),
   methods: {
     isActive(href) {
-      if (href === '#') {
+      const currentRoute = this.$nuxt.$route.path;
+      if (currentRoute.includes(href)) {
         return true;
       }
     }

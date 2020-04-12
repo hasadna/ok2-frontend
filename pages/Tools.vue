@@ -4,7 +4,7 @@
       <ToolsSideBar />
     </aside>
     <article class="full">
-      <ToolsSearch  class="col-1-1"/>
+      <ToolsSearch class="col-1-1" />
       <nuxt-child />
     </article>
   </section>
