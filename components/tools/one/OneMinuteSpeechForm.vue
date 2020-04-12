@@ -18,7 +18,7 @@
 
       <v-row justify="center">
         <v-btn color="indigo" dark type="submit">
-          {{ $language.form.send }}
+          שליחה
         </v-btn>
       </v-row>
     </v-form>
@@ -54,12 +54,5 @@ export default {
 </script>
 
 <style>
-legend {
-  display: block;
-  margin-bottom: 2rem;
-}
-small {
-  margin: -25px 0 15px;
-  display: block;
-}
+
 </style>

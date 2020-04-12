@@ -13,7 +13,7 @@ import { ToolId } from '~/app/types/tool';
 
 export default {
   name: 'OneMinuteSpeech',
-
+  transition: 'default',
   components: {
     ParliamentTool,
     OneMinuteSpeechForm,
@@ -27,4 +27,5 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+
 </style>
