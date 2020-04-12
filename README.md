@@ -5,12 +5,12 @@ The frontend of Open Knesset v2.0
 ## Project setup
 
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+### build for production and launch server
+````npm run build````
+````npm run dev````
 
-# generate static project
-$ npm run generate
+### generate static project
+ npm run generate
 ```
 Lint and fix errors:
 
@@ -24,7 +24,7 @@ npm run lint --fix
 pip install -r requirements.txt
 ````
 
-# manage.py migrate to install database ( so only once)
-# manage.py runserver (to run localhost 8000 as)
+manage.py migrate to install database ( so only once)
+manage.py runserver (to run localhost 8000 as)
 
 

@@ -32,7 +32,6 @@ export default {
       // TODO: implement deboucne on input
     },
     doSearch() {
-      console.log(this.input);
     }
   }
 };

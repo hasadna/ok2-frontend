@@ -95,7 +95,7 @@ export default {
 
         this.isLoading = false;
       } catch (e) {
-        console.error(e);
+        return e;
       }
     },
   },

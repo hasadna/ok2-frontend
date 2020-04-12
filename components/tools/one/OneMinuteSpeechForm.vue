@@ -70,8 +70,7 @@ export default {
   }),
   methods: {
     send() {
-      const form = { title: this.title, content: this.content };
-      console.log(form);
+      // const form = { title: this.title, content: this.content };
     },
   },
 };

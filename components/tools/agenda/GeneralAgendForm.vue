@@ -39,7 +39,7 @@ export default {
   }),
   methods: {
     send() {
-      console.log('send');
+
     },
   },
 };
