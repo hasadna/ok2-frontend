@@ -2,20 +2,17 @@
   <section class="form__warpper">
     <v-form @submit.prevent="send()">
       <h2 class="text-center">
-        שליחת הצעה לנאום בן דקה
+        הגשת הצעה לסדר יום
       </h2>
+      <hr class="hr">
       <ok-input
         v-model="title"
         name="title"
-        label="נושא הנאום"
+        label="נושא ההצעה"
         placeholder="לדוג' תקציב המדינה, פיתוח הפריפריה"
         type="text"
       />
-      <v-textarea v-model="text" outlined name="text" auto-grow label="תוכן הנאום" />
-      <CharacterCount :text="text" :word-amount="wordAmount" />
-      <h6>אורך אופטימלי - {{ wordAmount.min }}-{{ wordAmount.max }} מילים ולא יותר מ-{{ wordAmount.error }}</h6>
       <v-spacer />
-
       <v-row justify="center">
         <v-btn color="indigo" dark type="submit">
           שליחה
@@ -26,22 +23,15 @@
 </template>
 
 <script lang="ts">
-import CharacterCount from '~/components/shared/CharacterCount.vue';
 import OkInput from '~/components/shared/form/OkInput.vue';
 
 export default {
   components: {
-    CharacterCount,
     OkInput
   },
   data: () => ({
     title: '',
     text: '',
-    wordAmount: {
-      min: 150,
-      max: 250,
-      error: 300,
-    },
     status: {
       color: 'gray',
       var: '--v-secondary-darken2',

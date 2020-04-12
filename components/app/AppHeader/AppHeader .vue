@@ -2,13 +2,13 @@
   <v-app-bar app clipped-right class="header">
     <nuxt-link to="/" class="d-flex align-center">
       <span class="svg block" v-html="logo" />
-      <h1 class="ok-color display-1 mr-2">
+      <h1 class="ok-color display-1 mr-2 d-none d-md-block">
         כנסת פתוחה
       </h1>
     </nuxt-link>
-    <!-- <v-app-bar-nav-icon @click="toglleIsDrawer()" /> -->
+    <v-app-bar-nav-icon class="d-flex d-sm-none" @click="toglleIsDrawer()" />
     <v-spacer />
-    <main-menu class="row-1-1" />
+    <main-menu class="row-1-1 d-none d-sm-flex" />
     <v-spacer />
 
     <AppHeaderUser />

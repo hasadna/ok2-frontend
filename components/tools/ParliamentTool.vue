@@ -4,7 +4,7 @@
       Loading...
     </div>
     <div v-else class="tool-container">
-      <h1>{{ title }}</h1>
+      <h2>{{ title }}</h2>
       <div class="mini-blocks-container">
         <div class="d-flex">
           <div class="mini-block">
