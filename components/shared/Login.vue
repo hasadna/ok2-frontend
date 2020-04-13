@@ -17,6 +17,7 @@
           <v-alert v-if="errorMeesge" color="error" :value="errorMeesge">
             <small>{{ errorMeesge }}</small>
           </v-alert>
+          <v-divider light inset />
           <v-card-text>
             <ok-input
               v-model="email"
@@ -32,28 +33,17 @@
               type="password"
               class="mb-4"
             />
-          </v-card-text>
-          <v-card-actions>
-            <v-btn
-              type="cancel"
-              class="mr-auto ml-2"
-              color="#FAFAFA"
-              large
-              @click="dialogState(false)"
-            >
-              ביטול
-            </v-btn>
             <v-btn
               type="submit"
+              block="true"
               form="login-form"
               color="#4D4D4D"
-              class="white--text"
+              class="white--text block-btn"
               large
             >
               כניסה
             </v-btn>
-          </v-card-actions>
-          <v-divider light />
+          </v-card-text>
           <div
             class="
               flex"
@@ -91,7 +81,7 @@ export default {
     errorMeesge: '',
   }),
   created() {
-    EventBus.$on(BUSEVENTS.toglleLoginDialog, () => {
+    EventBus.$on(BUSEVENTS.toggleLoginDialog, () => {
       this.dialogState(!this.dialog);
     });
   },

@@ -14,4 +14,16 @@
       color: #6f6f6f;
     }
   }
+
+}
+
+.v-dialog .v-form {
+  .block-btn {
+    border-radius: 20px;
+    height: 40px;
+  }
+  hr.v-divider--inset:not(.v-divider--vertical) {
+    margin: auto;
+    max-width: calc(100% - 48px);
+  }
 }
