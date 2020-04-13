@@ -25,7 +25,7 @@ export default {
     ],
   }),
   created() {
-    EventBus.$on(BUSEVENTS.toglleIsDrawer, (payload) => {
+    EventBus.$on(BUSEVENTS.toggleIsDrawer, (payload) => {
       this.setDrawer(payload);
     });
   },

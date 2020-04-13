@@ -4,7 +4,7 @@
       שלום {{ user ? user.name : `אורח/ת` }}<br>
       <strong>{{ user ? `יציאה מחשבונך`: `התחברות` }}</strong>
     </div>
-    <button @click="toglleForm">
+    <button @click="toggleForm">
       <v-avatar size="36">
         <v-img v-if="user && user.avatar" :src="user.avatar" />
         <v-icon v-else>
@@ -50,7 +50,7 @@ export default {
     }
   },
   methods: {
-    toglleForm() {
+    toggleForm() {
       this.isDisplayForm = !this.isDisplayForm;
     }
   }

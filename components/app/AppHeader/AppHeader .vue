@@ -6,7 +6,7 @@
         כנסת פתוחה
       </h1>
     </nuxt-link>
-    <v-app-bar-nav-icon class="d-flex d-sm-none" @click="toglleIsDrawer()" />
+    <v-app-bar-nav-icon class="d-flex d-sm-none" @click="toggleIsDrawer()" />
     <v-spacer />
     <main-menu class="row-1-1 d-none d-sm-flex" />
     <v-spacer />
@@ -38,9 +38,9 @@ export default {
   }),
 
   methods: {
-    toglleIsDrawer() {
+    toggleIsDrawer() {
       this.isDrawer = !this.isDrawer;
-      EventBus.$emit(BUSEVENTS.toglleIsDrawer, this.isDrawer);
+      EventBus.$emit(BUSEVENTS.toggleIsDrawer, this.isDrawer);
     },
   },
 };

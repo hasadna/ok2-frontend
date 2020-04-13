@@ -131,7 +131,7 @@ export default {
       return this.isRepaetForm() && this.$refs.form.validate();
     },
     openLigonModal() {
-      EventBus.$emit(BUSEVENTS.toglleLoginDialog);
+      EventBus.$emit(BUSEVENTS.toggleLoginDialog);
     },
   },
 };
