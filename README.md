@@ -3,11 +3,9 @@
 This is the frontend of Open Knesset v2.0 repository.
 Below you will find some information about the project, how to install it locally and the basics.
 
-![OK2](https://raw.githubusercontent.com/hasadna/ok2-frontend/master/assets/images/ok.png){width=100px}
-
 ## What is it about? 📢
 
-You can read more about the general idea in this document [כנסת פתוחה הדור הבא](https://github.com/hasadna/ok2-frontend/blob/master/כנסת פתוחה הדור הבא.pdf)
+You can read more about the general idea in this document [כנסת פתוחה הדור הבא](https://github.com/hasadna/ok2-frontend/blob/master/about.pdf)
 
 The UX was made in Axure over [here](https://ube8fw.axshare.com/#id=rvs78r&p=%D7%A9%D7%90%D7%99%D7%9C%D7%AA%D7%94_%D7%93%D7%97%D7%95%D7%A4%D7%94&g=1).
 
@@ -61,3 +59,4 @@ Ask for a code review.
 
 
 
+![OK2](https://raw.githubusercontent.com/hasadna/ok2-frontend/master/assets/images/ok.png)
