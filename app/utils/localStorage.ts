@@ -1,4 +1,5 @@
 export const isPleaseRegister = 'isPleaseRegister';
+export const userLocalStorage = '__user__';
 
 export class Ls {
   public static set(key: string, data: any): void {

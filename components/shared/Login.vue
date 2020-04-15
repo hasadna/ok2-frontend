@@ -105,8 +105,11 @@ export default {
         this.$store.dispatch('user/logIn', {
           username: this.email,
           password: this.password,
-        });
-        this.dialogState(false);
+        })
+          .then(() => {
+          // TODO: make sure we have user token and so
+            this.dialogState(false);
+          });
       } catch (e) {
         this.errorMeesge = 'שגיאת שרת';
       }
