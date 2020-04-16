@@ -5,16 +5,16 @@
     </button>
     <ul class="pa-0 flc">
       <li
-        v-for="menu in menus"
-        :key="menu.link"
+        v-for="route in routes"
+        :key="route.link"
         class="li__wrapper ovh"
       >
         <nuxt-link
-          :to="`/tools/${menu.link}`"
+          :to="`/tools/${route.path}`"
           class="li d-flex px-4 justify-space-between"
-          :class="{'active':isActive(menu.link)}"
+          :class="{'active':route.isActive}"
         >
-          <span class="black--text"> {{ menu.name }} </span>
+          <span class="black--text"> {{ route.text }} </span>
           <v-icon>mdi-chevron-left</v-icon>
         </nuxt-link>
       </li>
@@ -27,20 +27,42 @@ export default {
   name: 'ToolsSideBar',
   data: () => ({
     isClose: false,
-    menus: [
-      { name: 'שאילתות ונאומים בני דקה', link: 'one-minute-speech' },
-      { name: 'הצעות לסדר יום', link: 'genreal-agenda' },
-    ],
   }),
+  computed: {
+    routes() {
+      const toolRoots = this.$router.options.routes.find(route => route.path === '/tools');
+      if (!toolRoots && !toolRoots.children) {
+        return [];
+      }
+      return toolRoots.children
+        .filter(route => !!route.path)
+        .map(route => ({
+          ...route,
+          text: this.getRouteName(route.path),
+          isActive: this.isActive(route.path)
+        }));
+    }
+  },
   methods: {
     isActive(href) {
       const currentRoute = this.$nuxt.$route.path;
-      if (currentRoute.includes(href)) {
-        return true;
-      }
+      return currentRoute.includes(href);
     },
     toglleSideBar() {
       this.isClose = !this.isClose;
+    },
+    getRouteName(path) {
+      switch (path) {
+        case 'one-minute-speech':
+          return 'שאילתות ונאומים בני דקה';
+        case 'genreal-agenda':
+          return 'הצעות לסדר יום';
+        default:
+          return path.toLowerCase()
+            .split('-')
+            .map(s => s.charAt(0).toUpperCase() + s.slice(1))
+            .join(' ');
+      }
     }
   }
 };
