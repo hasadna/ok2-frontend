@@ -1,6 +1,6 @@
 <template>
   <section class="tools d-flex height-1-1">
-    <aside class="aside-placholder relative ml-8 height-1-1 ">
+    <aside class="aside-placholder relative ml-8 height-1-1 hidden-xs-only">
       <ToolsSideBar />
     </aside>
     <article class="full">
@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .aside-placholder{
-  flex:0 0 290px;
-  background-color: #fff;
+  flex:1;
+  // background-color: #fff;
 }
 </style>

@@ -1,8 +1,9 @@
 export const isPleaseRegister = 'isPleaseRegister';
+export const userLocalStorage = '__user__';
 
 export class Ls {
   public static set(key: string, data: any): void {
-    if (!window.localStorage || !key) {
+    if (!process.client || !window.localStorage || !key) {
       return;
     }
     localStorage.setItem(key, JSON.stringify(data));
@@ -20,7 +21,7 @@ export class Ls {
   }
 
   public static get(key: string, property?: string): any {
-    if (!window.localStorage || !key) {
+    if (!process.client || !window.localStorage || !key) {
       return;
     }
     const item = localStorage.getItem(key);
@@ -38,7 +39,7 @@ export class Ls {
   }
 
   public static remove(key: string) {
-    if (!window.localStorage || !key) {
+    if (!process.client || !window.localStorage || !key) {
       return;
     }
     localStorage.removeItem(key);
