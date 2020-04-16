@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { getRouteName } from '~/app/utils/routeNames.ts';
+
 export default {
   name: 'ToolsSideBar',
   data: () => ({
@@ -38,32 +40,19 @@ export default {
         .filter(route => !!route.path)
         .map(route => ({
           ...route,
-          text: this.getRouteName(route.path),
+          text: getRouteName(route.path),
           isActive: this.isActive(route.path)
         }));
     }
   },
   methods: {
+    toglleSideBar() {
+      this.isClose = !this.isClose;
+    },
     isActive(href) {
       const currentRoute = this.$nuxt.$route.path;
       return currentRoute.includes(href);
     },
-    toglleSideBar() {
-      this.isClose = !this.isClose;
-    },
-    getRouteName(path) {
-      switch (path) {
-        case 'one-minute-speech':
-          return 'שאילתות ונאומים בני דקה';
-        case 'genreal-agenda':
-          return 'הצעות לסדר יום';
-        default:
-          return path.toLowerCase()
-            .split('-')
-            .map(s => s.charAt(0).toUpperCase() + s.slice(1))
-            .join(' ');
-      }
-    }
   }
 };
 </script>
