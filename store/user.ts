@@ -15,7 +15,7 @@ export const getters = {
 export const mutations = {
   [LOGIN.CHECK_IN]: (state: UserState, user: User) => {
     state.user = user;
-    Ls.set(userLocalStorage, user);
+    Ls.set(userLocalStorage, user);// TODO: check if remmber me on
   },
   [LOGIN.CHECK_OUT]: (state: UserState) => {
     Ls.remove(isPleaseRegister);
