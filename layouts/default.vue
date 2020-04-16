@@ -3,7 +3,7 @@
     <AppHeader />
     <AppSideBar />
     <v-content>
-      <v-container fluid class="height-1-1">
+      <v-container fluid class="height-1-1 pa-6">
         <router-view class="height-1-1" />
       </v-container>
     </v-content>
