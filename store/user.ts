@@ -6,7 +6,7 @@ import UsersService from '~/services/users.services';
 import { Ls, isPleaseRegister, userLocalStorage } from '~/app/utils/localStorage.ts';
 
 export const state = (): UserState => ({
-  user: Ls.get(userLocalStorage) || null,
+  user: null,
 });
 
 export const getters = {

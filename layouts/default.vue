@@ -15,6 +15,8 @@
 import AppHeader from '../components/app/AppHeader/AppHeader ';
 import AppFooter from '../components/app/AppFooter/AppFooter';
 import AppSideBar from '../components/app/AppSiderBar/AppSideBar';
+import { Ls, userLocalStorage } from '../app/utils/localStorage';
+import { LOGIN } from '~/store/mutations-types.ts';
 
 export default {
   components: {
@@ -25,5 +27,11 @@ export default {
   data() {
     return {};
   },
+  mounted() { // client side only
+    const user = Ls.get(userLocalStorage);
+    if (user) {
+      this.$store.commit(`user/${LOGIN.CHECK_IN}`, user);
+    }
+  }
 };
 </script>

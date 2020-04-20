@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex hello">
     <div class="tal mx-2">
-      שלום {{ user ? user.name : `אורח/ת` }}<br>
+      שלום {{ user ? user.firstName : `אורח/ת` }}<br>
       <strong>{{ user ? `יציאה מחשבונך`: `התחברות` }}</strong>
     </div>
     <button @click="toglleForm">
