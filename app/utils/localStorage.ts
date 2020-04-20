@@ -3,7 +3,7 @@ export const userLocalStorage = '__user__';
 
 export class Ls {
   public static set(key: string, data: any): void {
-    if (!process.client || !window.localStorage || !key) {
+    if (!process.client || !window.localStorage || !key || !data) {
       return;
     }
     localStorage.setItem(key, JSON.stringify(data));
@@ -30,6 +30,7 @@ export class Ls {
       return;
     }
     // return propperty in object
+
     const json = JSON.parse(item);
     if (property) {
       return json[property];

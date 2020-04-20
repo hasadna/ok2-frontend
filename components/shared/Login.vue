@@ -8,15 +8,12 @@
             <v-spacer />
             <v-btn
               color="#fff"
-              flat
+              elevation="0"
               @click="dialogState(false)"
             >
               <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>
-          <v-alert v-if="errorMeesge" color="error" :value="errorMeesge">
-            <small>{{ errorMeesge }}</small>
-          </v-alert>
           <v-card-text>
             <ok-input
               v-model="email"
@@ -33,6 +30,9 @@
               class="mb-4"
             />
           </v-card-text>
+          <v-alert v-if="!!errorMeesge" color="error">
+            <small>{{ errorMeesge }}</small>
+          </v-alert>
           <v-card-actions>
             <v-btn
               type="cancel"
@@ -49,6 +49,7 @@
               color="#4D4D4D"
               class="white--text"
               large
+              :loading="loading"
             >
               כניסה
             </v-btn>
@@ -89,6 +90,7 @@ export default {
     email: '',
     password: '',
     errorMeesge: '',
+    loading: false
   }),
   created() {
     EventBus.$on(BUSEVENTS.toglleLoginDialog, () => {
@@ -99,19 +101,22 @@ export default {
     dialogState(state) {
       this.$emit('update:dialog', state);
     },
-    login() {
+    async login() {
+      this.loading = true;
       this.errorMeesge = '';
       try {
-        this.$store.dispatch('user/logIn', {
+        await this.$store.dispatch('user/logIn', {
           username: this.email,
           password: this.password,
         })
-          .then(() => {
-          // TODO: make sure we have user token and so
+          .then((res) => {
+            this.loading = false;
+            // TODO: make sure we have user token and so
             this.dialogState(false);
           });
       } catch (e) {
         this.errorMeesge = 'שגיאת שרת';
+        this.loading = false;
       }
     },
     navigateToRegisterPage() {

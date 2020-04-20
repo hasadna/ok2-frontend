@@ -2,10 +2,11 @@ import axios from 'axios';
 import { User, CredentialRequest, NewUser } from '~/app/types/user';
 
 class UsersService {
-  private baseUrl = '';
+  private baseUrl = 'api';
+  private headers = { headers: { 'Content-Type': 'application/json' } };
 
   public async getUser(credentias: CredentialRequest): Promise<User> {
-    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/login`, credentias);
+    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/user`, credentias, this.headers);
     return {
       ...data,
     };
