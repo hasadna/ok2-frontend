@@ -20,4 +20,5 @@ export interface NewUser {
   role: string;
   email: string;
   password: string;
+  confirmPassword: string;
 }

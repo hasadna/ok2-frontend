@@ -14,7 +14,7 @@
       <v-icon>mdi-chevron-down</v-icon>
     </button>
 
-    <div v-if="isDisplayForm">
+    <div v-if="isDisplayForm" class="relative">
       <Login v-if="!user" :dialog.sync="isDisplayForm" @update:dialog="isDisplayForm = $event" />
       <Logout v-else />
     </div>

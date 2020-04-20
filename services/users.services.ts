@@ -6,14 +6,14 @@ class UsersService {
   private headers = { headers: { 'Content-Type': 'application/json' } };
 
   public async getUser(credentias: CredentialRequest): Promise<User> {
-    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/user`, credentias, this.headers);
+    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/login`, credentias, this.headers);
     return {
       ...data,
     };
   }
 
   public async addUser(newUser: NewUser): Promise<User> {
-    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/users`, newUser);
+    const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/register`, newUser);
     return {
       ...data,
     };

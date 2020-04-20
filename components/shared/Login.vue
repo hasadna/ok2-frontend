@@ -114,8 +114,12 @@ export default {
             // TODO: make sure we have user token and so
             this.dialogState(false);
           });
-      } catch (e) {
-        this.errorMeesge = 'שגיאת שרת';
+      } catch (error) {
+        if (error && error.response && error.response.status === 401) {
+          this.errorMeesge = 'המייל או הסיסמא שהזנת שגויים';
+        } else {
+          this.errorMeesge = 'שגיאת שרת';
+        }
         this.loading = false;
       }
     },

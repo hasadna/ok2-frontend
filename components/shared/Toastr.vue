@@ -3,6 +3,7 @@
     <v-alert
       v-if="toastrs.includes(pleaseRegister)"
       dense
+      dismissible
       icon="mdi-alert"
       transition="slide-y-transition"
     >
@@ -42,7 +43,7 @@ export default {
   methods: {
     unSsetToastr(toastr) {
       this.$store.dispatch('ui/unSetToastr', toastr);
-      this.$router.push('RegisterPage');
+      this.$router.push('Register');
     }
   }
 

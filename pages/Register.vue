@@ -42,8 +42,8 @@
             />
 
             <v-text-field
-              v-model="confirm_password"
-              name="confirm_password"
+              v-model="confirmPassword"
+              name="confirmPassword"
               :label="`סיסמא שנית`"
               :rules="[rules.required]"
               type="password"
@@ -77,7 +77,7 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 import { EventBus, BUSEVENTS } from '~/services/bus/bus';
 
 export default {
@@ -89,7 +89,7 @@ export default {
     lastName: '',
     email: '',
     password: '',
-    confirm_password: '',
+    confirmPassword: '',
     roles: [
       { name: 'יועץ/ת' },
       { name: 'אקטיביסט/ת' },
@@ -125,7 +125,7 @@ export default {
       }
     },
     isRepaetForm() {
-      return this.password === this.confirm_password;
+      return this.password === this.confirmPassword;
     },
     isValid() {
       return this.isRepaetForm() && this.$refs.form.validate();
