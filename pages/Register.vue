@@ -104,6 +104,11 @@ export default {
         return pattern.test(value) || 'Invalid e-mail.';
       },
       password: (value) => {
+        // FROM DJAGNO
+        // Your password can’t be too similar to your other personal information.
+        // Your password must contain at least 8 characters.
+        // Your password can’t be a commonly used password.
+        // Your password can’t be entirely numeric.
         const isValid = value && value.length >= 5;
         return isValid || 'יש להזין 5 תווים לפחות';
       },
@@ -118,7 +123,7 @@ export default {
         this.$store.dispatch('user/signUp', {
           privateName: this.privateName,
           lastName: this.lastName,
-          role: this.role,
+          role: this.role, // TODO convert to english using UserRole enum
           email: this.email,
           password: this.password,
         });

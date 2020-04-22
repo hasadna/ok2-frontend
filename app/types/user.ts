@@ -22,3 +22,10 @@ export interface NewUser {
   password: string;
   confirmPassword: string;
 }
+
+export enum UserRole{
+  other = 'אחר',
+  advisor = 'יועץ/ת',
+  mk = 'חבר כנסת',
+  activist = 'אקטיביסט/ת',
+}
