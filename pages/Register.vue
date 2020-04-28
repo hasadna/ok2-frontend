@@ -168,8 +168,6 @@ import { Ls, isPleaseRegister } from '~/app/utils/localStorage.ts';
 
 export default {
   name: 'RegisterPage',
-  components: {
-  },
   middleware: 'register',
   data: () => ({
     inputSplited: false,
