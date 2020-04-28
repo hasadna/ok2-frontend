@@ -42,6 +42,8 @@ export const actions: ActionTree<UserState, UserState> = {
     commit(LOGIN.CHECK_OUT);
   },
   signUp: ({ commit }: any, newUser: NewUser) => {
+    console.log('X');
+
     return UsersService.addUser(newUser)
       .then((user) => {
         commit(LOGIN.CHECK_IN, user, newUser.remmberMe);
