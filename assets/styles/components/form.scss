@@ -36,3 +36,19 @@
     content: "\F043E";
   }
 }
+.ok-form {
+  .ok-input {
+    font-size: 14px;
+    line-height: 20px;
+    span {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .v-input__slot {
+      border: 1px solid #a3a3a3;
+    }
+  }
+  .theme--light.v-text-field > .v-input__control > .v-input__slot:before {
+    display: none;
+  }
+}

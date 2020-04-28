@@ -17,63 +17,97 @@
         </v-toolbar>
         <v-divider />
 
-        <v-form id="signup-form" ref="form" v-model="valid" form @submit.prevent="register()">
+        <v-form
+          id="signup-form"
+          ref="form"
+          v-model="valid"
+          form
+          class="ok-form"
+          @submit.prevent="register()"
+        >
           <v-alert :value="!!alertMsg" color="error" icon="warning">
             {{ alertMsg }}
           </v-alert>
           <h2 class="tac d-block my-1">
             רק כמה פרטים וזהו...
           </h2>
-
-          <ok-input
+          <label
             v-if="!inputSplited"
-            v-model="fullName"
-            class="mt-3"
-            name="fullName"
-            :label="`שם מלא`"
-          />
+            class="ok-input mt-3"
+          >
+            <span>
+              שם מלא
+            </span>
+            <v-text-field
+              v-model="fullName"
+              filled
+              dense
+              name="fullName"
+            />
+          </label>
           <div v-if="inputSplited" class="d-flex mt-3" fluid>
-            <ok-input
-              v-model="firstName"
-              class="ml-4 flex-grow-1"
-              name="firstName"
-              :label="`שם פרטי`"
-              :rules="[rules.required]"
-            />
-            <ok-input
-              v-model="lastName"
-              class="flex-grow-1"
-              name="lastName"
-              :label="`שם משפחה`"
-              :rules="[rules.required]"
-            />
+            <label class="ok-input">
+              <span> שם פרטי</span>
+              <v-text-field
+                v-model="firstName"
+                class="ml-4 flex-grow-1"
+                name="firstName"
+                :rules="[rules.required]"
+                filled
+                dense
+              />
+            </label>
+
+            <label class="ok-input ">
+              <span>שם משפחה</span>
+              <v-text-field
+                v-model="lastName"
+                class="flex-grow-1"
+                name="lastName"
+                filled
+                dense
+                :rules="[rules.required]"
+              />
+            </label>
           </div>
-          <ok-input
-            v-model="email"
-            class="mt-3"
-            name="email"
-            type="email"
-            label="דואר אלקטרוני - ישמש כשם המשתמש שלך"
-            :rules="[rules.required, rules.email]"
-          />
-
-          <ok-input
-            v-model="password"
-            class="mt-3"
-            name="password"
-            :label="`סיסמא`"
-            :rules="[rules.required, rules.password]"
-            type="password"
-          />
-
-          <ok-input
-            v-model="confirmPassword"
-            class="mt-3"
-            name="confirmPassword"
-            :label="`סיסמא שנית`"
-            :rules="[rules.required]"
-            type="password"
-          />
+          <label class="ok-input">
+            <span>דואר אלקטרוני - ישמש כשם המשתמש שלך</span>
+            <v-text-field
+              v-model="email"
+              class="mt-3"
+              name="email"
+              type="email"
+              :rules="[rules.required, rules.email]"
+              filled
+              dense
+            />
+          </label>
+          <label class="ok-input mt-3">
+            <span> סיסמא </span>
+            <v-text-field
+              v-model="password"
+              name="password"
+              :rules="[rules.required, rules.passwordLength ,rules.passwordNumric]"
+              type="password"
+              counter
+              filled
+              dense
+            />
+          </label>
+          <label class="ok-input mt-3">
+            <span>
+              סיסמא שנית
+            </span>
+            <v-text-field
+              v-model="confirmPassword"
+              name="confirmPassword"
+              :rules="[rules.required , (password === confirmPassword) || 'הסיסמאות אינן תואמות']"
+              type="password"
+              counter
+              filled
+              dense
+            />
+          </label>
 
           <v-divider light />
 
@@ -130,13 +164,11 @@
 
 <script lang="ts">
 import { EventBus, BUSEVENTS } from '~/services/bus/bus';
-import OkInput from '~/components/shared/form/OkInput.vue';
 import { Ls, isPleaseRegister } from '~/app/utils/localStorage.ts';
 
 export default {
   name: 'RegisterPage',
   components: {
-    OkInput
   },
   middleware: 'register',
   data: () => ({
@@ -163,16 +195,19 @@ export default {
       required: (value:string) => !!value || 'חובה',
       email: (value:string) => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return pattern.test(value) || 'Invalid e-mail.';
+        return pattern.test(value) || 'המייל אינו תקין';
       },
-      password: (value:string) => {
+      passwordLength: (value:string) => {
         // FROM DJAGNO
-        // Your password can’t be too similar to your other personal information.
         // Your password must contain at least 8 characters.
+        // Your password can’t be too similar to your other personal information.
         // Your password can’t be a commonly used password.
-        // Your password can’t be entirely numeric.
-        const isValid = value && value.length >= 5;
-        return isValid || 'יש להזין 5 תווים לפחות';
+        const isValid = !!value && value.length >= 8;
+        return isValid || 'יש להזין 8  תווים לפחות';
+      },
+      passwordNumric: (value:string) => {
+        const isValid = !!value && !/^\d+$/.test(value);
+        return isValid || 'יש להזין גם אותיות';
       },
     },
   }),
@@ -185,10 +220,9 @@ export default {
       this.inputSplited = isSplited;
       if (isSplited) {
         setTimeout(() => {
-          const x:any = document.querySelector('[name="lastName"]');
-          console.log(x);
-          if (x) {
-            x.focus();
+          const lastNameEl:any = document.querySelector('[name="lastName"]');
+          if (lastNameEl) {
+            lastNameEl.focus();
           }
         }, 1);
       }
@@ -200,6 +234,7 @@ export default {
 
   methods: {
     register() {
+      this.inputSplited = true;
       if (this.isValid()) {
         this.isLoading = true;
         this.errorMeesge = '';
@@ -250,7 +285,7 @@ export default {
 <style lang="scss" scoped>
 .elevation-12{
   width: 100%;
-  max-width: 580px;
+  max-width: 400px;
 }
 
 </style>
