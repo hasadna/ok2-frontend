@@ -14,11 +14,13 @@
               <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>
+          <hr class="ma-auto" style="max-width:90%">
           <v-card-text>
             <ok-input
               v-model="email"
               name="login"
               label="מייל / שם משתמש"
+              placeholder="הדואר האלקטורני שאיתו נרשמת"
               type="text"
               class="mb-4"
             />
@@ -33,37 +35,36 @@
           <v-alert v-if="!!errorMeesge" color="error">
             <small>{{ errorMeesge }}</small>
           </v-alert>
-          <v-card-actions>
-            <v-btn
-              type="cancel"
-              class="mr-auto ml-2"
-              color="#FAFAFA"
-              large
-              @click="dialogState(false)"
-            >
-              ביטול
-            </v-btn>
+          <v-card-actions class="pa-4">
             <v-btn
               type="submit"
               form="login-form"
               color="#4D4D4D"
-              class="white--text"
+              class="white--text ok-btn col-1-1"
               large
-              :loading="loading"
+              :loading="isLoading"
             >
               כניסה
             </v-btn>
           </v-card-actions>
-          <v-divider light />
-          <div
-            class="
-              flex"
-          >
+          <div class="tac">
             <v-btn
+              class="mt-6 mb-1"
               type="button"
+              text
               @click.prevent="navigateToRegisterPage()"
             >
-              הרשמה
+              עוד לא נרשמת?
+              <strong>&nbsp;להרשמה</strong>
+            </v-btn>
+            <br>
+            <v-btn
+              class="mt-1 mb-6"
+              type="button"
+              text
+              @click.prevent="passwordReset()"
+            >
+              שחכתי סיסמא
             </v-btn>
           </div>
         </v-card>
@@ -90,7 +91,7 @@ export default {
     email: '',
     password: '',
     errorMeesge: '',
-    loading: false
+    isLoading: false
   }),
   created() {
     EventBus.$on(BUSEVENTS.toglleLoginDialog, () => {
@@ -102,15 +103,15 @@ export default {
       this.$emit('update:dialog', state);
     },
     async login() {
-      this.loading = true;
+      this.isLoading = true;
       this.errorMeesge = '';
       try {
         await this.$store.dispatch('user/logIn', {
-          username: this.email,
+          email: this.email,
           password: this.password,
         })
           .then((res) => {
-            this.loading = false;
+            this.isLoading = false;
             // TODO: make sure we have user token and so
             this.dialogState(false);
           });
@@ -120,10 +121,14 @@ export default {
         } else {
           this.errorMeesge = 'שגיאת שרת';
         }
-        this.loading = false;
+        this.isLoading = false;
       }
     },
     navigateToRegisterPage() {
+      this.$router.push('register');
+      this.dialogState(false);
+    },
+    passwordResets() {
       this.$router.push('register');
       this.dialogState(false);
     },

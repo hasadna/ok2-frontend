@@ -10,7 +10,7 @@ export interface User {
 }
 
 export interface CredentialRequest {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -21,6 +21,7 @@ export interface NewUser {
   email: string;
   password: string;
   confirmPassword: string;
+  remmberMe:boolean;
 }
 
 export enum UserRole{

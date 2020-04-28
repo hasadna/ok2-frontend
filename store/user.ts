@@ -15,13 +15,14 @@ export const getters = {
 };
 
 export const mutations = {
-  [LOGIN.CHECK_IN]: (state: UserState, user: User) => {
+  [LOGIN.CHECK_IN]: (state: UserState, user: User, remmberMe?:boolean) => {
     state.user = user;
     axios.defaults.headers.common.Authorization = `Bearer ${
       user.token
     }`;
-
-    Ls.set(userLocalStorage, user);// TODO: check if remmber me on
+    if (remmberMe) {
+      Ls.set(userLocalStorage, user);
+    }
   },
   [LOGIN.CHECK_OUT]: (state: UserState) => {
     Ls.remove(isPleaseRegister);
@@ -41,9 +42,9 @@ export const actions: ActionTree<UserState, UserState> = {
     commit(LOGIN.CHECK_OUT);
   },
   signUp: ({ commit }: any, newUser: NewUser) => {
-    UsersService.addUser(newUser)
+    return UsersService.addUser(newUser)
       .then((user) => {
-        commit(LOGIN.CHECK_IN, user);
+        commit(LOGIN.CHECK_IN, user, newUser.remmberMe);
       });
   },
 };

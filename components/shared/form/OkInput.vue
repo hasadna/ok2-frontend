@@ -3,7 +3,14 @@
     <span class="mb-1 ok-input__title d-block">
       {{ label }}
     </span>
-    <input :type="type" :name="name" class="input" :placeholder="placeholder" @input="$emit('input', $event.target.value)">
+    <input
+      :type="type"
+      :name="name"
+      class="input"
+      :placeholder="placeholder"
+      :value="$attrs.value"
+      @input="$emit('input', $event.target.value)"
+    >
   </label>
 </template>
 
@@ -54,6 +61,7 @@ export default {
     font-size: 14px;
     &::placeholder{
       color:#6F6F6F;
+      font-style: italic;
     }
   }
 }

@@ -2,10 +2,10 @@
   display: none !important;
 }
 @media #{$mobile} {
-  html {
-    font-size: 16px;
-    font-size: 4.266666666666667vw;
-  }
+  // html {
+  //   font-size: 16px;
+  //   font-size: 4.266666666666667vw;
+  // }
   .desktop {
     display: none;
   }

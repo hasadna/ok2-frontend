@@ -7,7 +7,7 @@
         </nuxt-link>
       </li>
       <li v-if="isLogedIn" :class="{'active':isActive('my-profile')}" class="px-4 tac black--text row-1-1 d-flex justify-center flex-column fs18">
-        <nuxt-link to="'my-profile">
+        <nuxt-link to="my-profile">
           אזור אישי
         </nuxt-link>
       </li>

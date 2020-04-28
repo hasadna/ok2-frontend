@@ -14,11 +14,12 @@ class UsersService {
 
   public async addUser(newUser: NewUser): Promise<User> {
     const serilizeObj = {
+      ...newUser,
       email: newUser.email,
       first_name: newUser.privateName,
-      last_nam: newUser.lastName,
+      last_name: newUser.lastName,
       password: newUser.password,
-      confirm_password: newUser.confirmPassword
+      confirm_password: newUser.confirmPassword,
     };
     const { data } = await axios.post<Promise<User>>(`${this.baseUrl}/register`, serilizeObj);
     return {
