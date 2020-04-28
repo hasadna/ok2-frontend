@@ -1,14 +1,16 @@
 export interface User {
   id: number;
-  name: string;
-  username: string;
+  firstName: string;
+  lastName: string;
   email: string;
   phone: number;
+  token:string;
+  isActive:boolean;
   // role:string;
 }
 
 export interface CredentialRequest {
-  username: string;
+  email: string;
   password: string;
 }
 
@@ -18,4 +20,13 @@ export interface NewUser {
   role: string;
   email: string;
   password: string;
+  confirmPassword: string;
+  remmberMe:boolean;
+}
+
+export enum UserRole{
+  other = 'אחר',
+  advisor = 'יועץ/ת',
+  mk = 'חבר כנסת',
+  activist = 'אקטיביסט/ת',
 }

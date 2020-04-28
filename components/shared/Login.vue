@@ -8,20 +8,19 @@
             <v-spacer />
             <v-btn
               color="#fff"
-              flat
+              elevation="0"
               @click="dialogState(false)"
             >
               <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>
-          <v-alert v-if="errorMeesge" color="error" :value="errorMeesge">
-            <small>{{ errorMeesge }}</small>
-          </v-alert>
+          <hr class="ma-auto" style="max-width:90%">
           <v-card-text>
             <ok-input
               v-model="email"
               name="login"
               label="מייל / שם משתמש"
+              placeholder="הדואר האלקטורני שאיתו נרשמת"
               type="text"
               class="mb-4"
             />
@@ -33,36 +32,39 @@
               class="mb-4"
             />
           </v-card-text>
-          <v-card-actions>
-            <v-btn
-              type="cancel"
-              class="mr-auto ml-2"
-              color="#FAFAFA"
-              large
-              @click="dialogState(false)"
-            >
-              ביטול
-            </v-btn>
+          <v-alert v-if="!!errorMeesge" color="error">
+            <small>{{ errorMeesge }}</small>
+          </v-alert>
+          <v-card-actions class="pa-4">
             <v-btn
               type="submit"
               form="login-form"
               color="#4D4D4D"
-              class="white--text"
+              class="white--text ok-btn col-1-1"
               large
+              :loading="isLoading"
             >
               כניסה
             </v-btn>
           </v-card-actions>
-          <v-divider light />
-          <div
-            class="
-              flex"
-          >
+          <div class="tac">
             <v-btn
+              class="mt-6 mb-1"
               type="button"
+              text
               @click.prevent="navigateToRegisterPage()"
             >
-              הרשמה
+              עוד לא נרשמת?
+              <strong>&nbsp;להרשמה</strong>
+            </v-btn>
+            <br>
+            <v-btn
+              class="mt-1 mb-6"
+              type="button"
+              text
+              @click.prevent="passwordReset()"
+            >
+              שחכתי סיסמא
             </v-btn>
           </div>
         </v-card>
@@ -89,6 +91,7 @@ export default {
     email: '',
     password: '',
     errorMeesge: '',
+    isLoading: false
   }),
   created() {
     EventBus.$on(BUSEVENTS.toglleLoginDialog, () => {
@@ -99,22 +102,33 @@ export default {
     dialogState(state) {
       this.$emit('update:dialog', state);
     },
-    login() {
+    async login() {
+      this.isLoading = true;
       this.errorMeesge = '';
       try {
-        this.$store.dispatch('user/logIn', {
-          username: this.email,
+        await this.$store.dispatch('user/logIn', {
+          email: this.email,
           password: this.password,
         })
-          .then(() => {
-          // TODO: make sure we have user token and so
+          .then((res) => {
+            this.isLoading = false;
+            // TODO: make sure we have user token and so
             this.dialogState(false);
           });
-      } catch (e) {
-        this.errorMeesge = 'שגיאת שרת';
+      } catch (error) {
+        if (error && error.response && error.response.status === 401) {
+          this.errorMeesge = 'המייל או הסיסמא שהזנת שגויים';
+        } else {
+          this.errorMeesge = 'שגיאת שרת';
+        }
+        this.isLoading = false;
       }
     },
     navigateToRegisterPage() {
+      this.$router.push('register');
+      this.dialogState(false);
+    },
+    passwordResets() {
       this.$router.push('register');
       this.dialogState(false);
     },

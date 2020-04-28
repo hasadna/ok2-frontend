@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="absolute tooltip">
     שלום , {{ user.name }}
     <v-btn @click="logOut()">
       התנתקות
@@ -25,5 +25,11 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scooped>
+.tooltip{
+    bottom: -200%;
+    left: 0;
+    right: -156px;
+}
+
 </style>

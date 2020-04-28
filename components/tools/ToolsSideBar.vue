@@ -1,6 +1,6 @@
 <template>
   <nav :class="{'close':isClose}" class="nav height-1-1">
-    <button class="pa-3 fll hidden-xs-only hidden-lg-and-up" @click="toglleSideBar">
+    <button class="pa-3 fll hidden-xs-only hidden-lg-and-up" @click="toglleSideBar(!isClose)">
       <v-icon>mdi-{{ isClose ? 'chevron-left' : 'close' }}</v-icon>
     </button>
     <ul class="pa-0 flc">
@@ -33,7 +33,7 @@ export default {
   computed: {
     routes() {
       const toolRoots = this.$router.options.routes.find(route => route.path === '/tools');
-      if (!toolRoots && !toolRoots.children) {
+      if (!toolRoots || !toolRoots.children) {
         return [];
       }
       return toolRoots.children
@@ -46,8 +46,8 @@ export default {
     }
   },
   methods: {
-    toglleSideBar() {
-      this.isClose = !this.isClose;
+    toglleSideBar(to) {
+      this.isClose = to;
     },
     isActive(href) {
       const currentRoute = this.$nuxt.$route.path;

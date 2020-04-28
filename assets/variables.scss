@@ -24,7 +24,6 @@ $white: #f2f2f2;
 $mobile: "(max-width: 960px),(max-device-width: 760px),(orientation: portrait)";
 html {
   font-size: #{$baseFontSize}px;
-  font-size: 1.11vw;
 }
 body {
   font-size: px($baseFontSize);

@@ -6,11 +6,18 @@
           {{ menu.name }}
         </nuxt-link>
       </li>
+      <li v-if="isLogedIn" :class="{'active':isActive('my-profile')}" class="px-4 tac black--text row-1-1 d-flex justify-center flex-column fs18">
+        <nuxt-link to="my-profile">
+          אזור אישי
+        </nuxt-link>
+      </li>
     </ul>
   </nav>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'MainMenu',
   data: () => ({
@@ -29,6 +36,11 @@ export default {
       },
     ],
   }),
+  computed: {
+    ...mapGetters({
+      isLogedIn: 'user/isLogedIn',
+    }),
+  },
   methods: {
     isActive(href) {
       const currentRoute = this.$nuxt.$route.path;
@@ -36,8 +48,7 @@ export default {
         return true;
       }
     }
-  }
-
+  },
 };
 </script>
 
