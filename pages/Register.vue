@@ -162,7 +162,7 @@
   </v-container>
 </template>
 
-<script lang="ts">
+<script>
 import { EventBus, BUSEVENTS } from '~/services/bus/bus';
 import { Ls, isPleaseRegister } from '~/app/utils/localStorage.ts';
 
@@ -192,12 +192,12 @@ export default {
     ],
     role: '',
     rules: {
-      required: (value:string) => !!value || 'חובה',
-      email: (value:string) => {
+      required: value => !!value || 'חובה',
+      email: (value) => {
         const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return pattern.test(value) || 'המייל אינו תקין';
       },
-      passwordLength: (value:string) => {
+      passwordLength: (value) => {
         // FROM DJAGNO
         // Your password must contain at least 8 characters.
         // Your password can’t be too similar to your other personal information.
@@ -205,7 +205,7 @@ export default {
         const isValid = !!value && value.length >= 8;
         return isValid || 'יש להזין 8  תווים לפחות';
       },
-      passwordNumric: (value:string) => {
+      passwordNumric: (value) => {
         const isValid = !!value && !/^\d+$/.test(value);
         return isValid || 'יש להזין גם אותיות';
       },
@@ -220,7 +220,7 @@ export default {
       this.inputSplited = isSplited;
       if (isSplited) {
         setTimeout(() => {
-          const lastNameEl:any = document.querySelector('[name="lastName"]');
+          const lastNameEl = document.querySelector('[name="lastName"]');
           if (lastNameEl) {
             lastNameEl.focus();
           }
@@ -262,12 +262,12 @@ export default {
           });
       }
     },
-    isRepaetForm():boolean {
+    isRepaetForm() {
       const isMatch = this.password === this.confirmPassword;
       return isMatch;
     },
     isValid() {
-      const isFormValid = (this.$refs.form as Vue & { validate: () => boolean }).validate();
+      const isFormValid = (this.$refs.form).validate();
       const isPasswordValid = this.isRepaetForm();
       return isPasswordValid && isFormValid;
     },
