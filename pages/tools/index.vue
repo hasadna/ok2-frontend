@@ -1,36 +1,22 @@
 <template>
-  <section class="tools d-flex height-1-1">
-    <aside class="aside-placholder relative ml-8 height-1-1 hidden-xs-only">
-      <ToolsSideBar />
-    </aside>
-    <article class="full">
-      <ToolsSearch class="col-1-1" />
-      <nuxt-child />
-    </article>
-  </section>
+  <div>
+    <h3>todo: re navigte to one of the pages</h3>
+  </div>
 </template>
-
 <script>
-import ToolsSideBar from '~/components/tools/ToolsSideBar.vue';
-import ToolsSearch from '~/components/tools/ToolsSearch.vue';
+
 export default {
-  name: 'Tools',
+  beforeCreate() {
+    const { children } = this.$router.options.routes.find(route => route.path === '/tools');
+    if (!children) {
+      return;
+    }
 
-  components: {
-    ToolsSideBar,
-    ToolsSearch
-  },
+    const child = children.filter(child => !!child.path)[0].path;
+    this.$router.push({
+      path: `tools/${child}`
+    });
+  }
 
-  data: () => ({
-  }),
-
-  methods: {},
 };
 </script>
-
-<style lang="scss" scoped>
-.aside-placholder{
-  flex:1;
-  // background-color: #fff;
-}
-</style>
