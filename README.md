@@ -61,3 +61,11 @@ We would love ❤️️ to hear from you in the issues section or by mail to one
 
 
 ![OK2](https://raw.githubusercontent.com/hasadna/ok2-frontend/master/assets/images/ok.png)
+
+
+
+<!--
+sitemap:https://github.com/nuxt-community/sitemap-module
+pwa: https://github.com/nuxt-community/pwa-module
+
+  -->

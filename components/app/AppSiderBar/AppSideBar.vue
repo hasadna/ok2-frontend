@@ -71,6 +71,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~assets/variables.scss";
+
 .my-2 {
   margin: 0 15px;
   text-decoration: none;

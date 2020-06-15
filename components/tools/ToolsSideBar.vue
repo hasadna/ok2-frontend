@@ -58,6 +58,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/variables.scss";
+
 .nav{
   min-width: 290px;
   max-width: 290px;

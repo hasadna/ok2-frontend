@@ -58,6 +58,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/variables.scss";
+
 .hello{
   line-height: 1;
 }

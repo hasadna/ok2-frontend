@@ -53,6 +53,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/variables.scss";
 
 li{
   position: relative;
