@@ -1,5 +1,5 @@
 <template>
-  <section class="form__wrapper">
+  <section class="form__wrapper rounded">
     <v-form @submit.prevent="send()">
       <h2 class="form__title">
         שליחת הצעה לנאום בן דקה

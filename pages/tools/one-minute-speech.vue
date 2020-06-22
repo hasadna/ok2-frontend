@@ -1,6 +1,9 @@
 <template>
   <div class="d-flex justify-space-between">
-    <OneMinuteSpeechForm class="half" />
+    <div class="half">
+      <Taknon />
+      <OneMinuteSpeechForm />
+    </div>
     <ParliamentTool :tool-id="toolId" class="half" />
   </div>
 </template>
@@ -8,6 +11,7 @@
 <script lang="ts">
 import ParliamentTool from '~/components/tools/ParliamentTool.vue';
 import OneMinuteSpeechForm from '~/components/tools/one/OneMinuteSpeechForm.vue';
+import Taknon from '~/components/tools/one/Taknon.vue';
 import { ToolId } from '~/app/types/tool';
 
 export default {
@@ -16,6 +20,7 @@ export default {
   components: {
     ParliamentTool,
     OneMinuteSpeechForm,
+    Taknon
   },
 
   data: () => ({
