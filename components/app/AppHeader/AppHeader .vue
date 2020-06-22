@@ -2,7 +2,7 @@
   <v-app-bar app clipped-right class="header">
     <nuxt-link to="/" class="d-flex align-center">
       <span class="svg block" v-html="logo" />
-      <h1 class="ok-color display-1 mr-2 d-none d-md-block">
+      <h1 class="ok-color display-1 mr-2 d-none d-md-block Alef">
         כנסת פתוחה
       </h1>
     </nuxt-link>

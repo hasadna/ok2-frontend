@@ -14,6 +14,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Alef&display=swap" rel="stylesheet' }
     ],
   },
   loading: { color: '#fff' },
@@ -49,6 +50,7 @@ export default {
     customVariables: [
       '~/assets/variables.scss',
     ],
+    treeShake: true,
     theme: {
       dark: false,
       themes: {

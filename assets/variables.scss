@@ -1,9 +1,8 @@
 // Ref: https://github.com/nuxt-community/vuetify-module#customvariables
 // fonts
-@import "~vuetify/src/styles/styles.sass";
-$font-family: "OpenSansHebrew", "Roboto", sans-serif;
-$body-font-family: "OpenSansHebrew", "Roboto", sans-serif;
-$heading-font-family: "OpenSansHebrew", "Roboto", sans-serif;
+$font-family: "OpenSansHebrew", "Alef", sans-serif;
+$body-font-family: "OpenSansHebrew", "Alef", sans-serif;
+$heading-font-family: "Alef", sans-serif;
 
 $baseFontSize: 16;
 :root {
@@ -36,3 +35,6 @@ body {
 @function rem($pixels) {
   @return $pixels / $baseFontSize + rem;
 }
+
+// nedd to be in the bottom of this file
+@import "~vuetify/src/styles/styles.sass";
